@@ -1,7 +1,7 @@
 {
 	"name": "javascript-collections",
 	"version": "0.0.0",
-	"description": "S3 Multipart File Upload",
+	"description": "JavaScript Collections",
 	"main": "dist/javascript-collections.min.js",
 	"license": "GPL-3.0",
 	"scripts": {
