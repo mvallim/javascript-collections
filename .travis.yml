@@ -2,4 +2,4 @@ language: node_js
 node_js:
   - "6"
   - "7"
-after_success: coveralls
+after_success: coveralls < coverage/report-lcov/lcov.info
