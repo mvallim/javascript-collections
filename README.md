@@ -1,1 +1,1 @@
-# npm-collections
+# javascript-collections
