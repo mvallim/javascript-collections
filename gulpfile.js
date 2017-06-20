@@ -19,7 +19,7 @@ gulp.task(
   `clean`,
   function () {
     return gulp
-      .src(config.path.dist)
+      .src(config.path.dist, {read: false})
       .pipe(clean());
   }
 );

@@ -1,12 +1,14 @@
 {
 	"name": "javascript-collections",
 	"version": "0.0.0",
-	"description": "Java Script Collections",
+	"description": "S3 Multipart File Upload",
 	"main": "dist/javascript-collections.min.js",
 	"license": "GPL-3.0",
 	"scripts": {
-		"test": "./node_modules/.bin/karma start",
-		"start": "npm run test && ./node_modules/.bin/gulp"
+		"karma": "./node_modules/.bin/karma start",
+		"test": "npm run karma -- --single-run",
+		"start": "npm run karma",
+		"build": "npm test && ./node_modules/.bin/gulp"
 	},
 	"author": "Marcos Tischer Vallim <tischer@gmail.com>",
 	"dependencies": {},
@@ -17,6 +19,7 @@
 		"gulp-uglifyjs": "^0.6.2",
 		"karma": "^1.7.0",
 		"karma-chai": "^0.1.0",
+		"karma-coverage": "^1.1.1",
 		"karma-mocha": "^1.3.0",
 		"karma-phantomjs-launcher": "^1.0.4",
 		"karma-verbose-reporter": "^0.0.6",
