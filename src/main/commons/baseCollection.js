@@ -1,4 +1,3 @@
-//TODO: Change this implementation to a meaning BaseCollection
 function BaseCollection (cfg) {
   BaseCollection.prototype.init.call(this, cfg || {})
 }
@@ -9,8 +8,7 @@ BaseCollection.prototype = Object.create(null, {
 
   init: {
     value: function (cfg) {
-      this.apply(this, cfg)
-      this.addListeners()
+      this.apply(this, cfg);
     },
     enumerable: false,
     configurable: false,
@@ -20,19 +18,32 @@ BaseCollection.prototype = Object.create(null, {
   apply: {
     value: function (obj, properties) {
       for (var property in properties) {
-        obj[property] = properties[property]
+        obj[property] = properties[property];
       }
     },
     enumerable: false,
     configurable: false,
     writable: false
   },
-
-  addListeners: {
-    value: function () {
+  
+  length : {
+    get : function () {
+      throw "NotImplementedException";
     },
-    enumerable: false,
-    configurable: false,
-    writable: false
+    configurable : false
+  },
+
+  empty : {
+    get : function () {
+      throw "NotImplementedException";      
+    },
+    configurable : false
+  },
+
+  clear : {
+    value : function () {
+      throw "NotImplementedException";
+    },
+    configurable : false
   }
 })
