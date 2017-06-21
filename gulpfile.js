@@ -29,7 +29,7 @@ gulp.task(
   function () {
     return gulp
       .src(config.path.src)
-      .pipe(uglify(descriptor.name+'.js'))
+      .pipe(uglify(descriptor.name + '.min.js'))
       .pipe(gulp.dest(config.path.dist));
   }
 );
