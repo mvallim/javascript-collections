@@ -41,7 +41,7 @@ LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
 
   hasNext : {
     value : function () {
-      return !this._index == this._list.length;
+      return !(this._index == this._list.length);
     },
     enumerable : false,
     configurable : false,

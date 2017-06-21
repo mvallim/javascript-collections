@@ -95,7 +95,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   forEach : {
     value : function (callback) {
       var iterator = this.iterator();
-
+     
       while (iterator.hasNext()) {
         var index = iterator.nextIndex();
         var node = iterator.next();
@@ -166,20 +166,18 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     value : function (value) {
       var key = this.hashCode(value);
 
-      if (!this.containsKey(key)) {
-        return false;
-      }
-
-      var index = this._keys.indexOf(key);
-
-      if (index >= 0) {
+      if (this.containsKey(key)) {
+        var index = this._keys.indexOf(key);
+        
         this._keys.splice(index, 1);
         this._values.splice(index, 1);
         delete this._dataStore[key];
         this._size--;
+
+        return true;
       }
 
-      return !this.containsKey(key);
+      return false;
     },
     enumerable : false,
     configurable : false,
@@ -189,7 +187,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   contains : {
     value : function (value) {
       var key = this.hashCode(value);
-      return key in this._dataStore;
+      return this.containsKey(key);
     },
     enumerable : false,
     configurable : false,

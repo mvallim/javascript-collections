@@ -41,7 +41,7 @@ HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
   
   hasNext : {
     value : function () {
-      return !this._index == this._keys.length;
+      return !(this._index == this._keys.length);
     },
     enumerable : false,
     configurable : false,

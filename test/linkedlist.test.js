@@ -18,6 +18,66 @@ describe("A test suite LinkedList", function () {
 
     assert.equal(1, first.value);
   });
+  
+  it('should be addAt value out of index success', function () {
+    var linkedList = new LinkedList();
+
+    linkedList.add(1);
+    linkedList.add(2);
+    
+    expect(function() {
+      linkedList.addAt(100, 1);
+    }).throw();
+    
+    expect(function() {
+      linkedList.addAt(-1, 1);
+    }).throw();
+  });
+  
+  it('should be removeAt value out of index success', function () {
+    var linkedList = new LinkedList();
+    
+    linkedList.add(1);
+    linkedList.add(2);
+    
+    expect(function() { 
+      linkedList.removeAt(100);
+    }).throw();
+    
+    expect(function() { 
+      linkedList.removeAt(-1);
+    }).throw();
+  });
+  
+  it('should be get value out of index success', function () {
+    var linkedList = new LinkedList();
+
+    linkedList.add(1);
+    linkedList.add(2);
+    
+    expect(function() { 
+      linkedList.get(100);
+    }).throw();
+    
+    expect(function() { 
+      linkedList.get(-1);
+    }).throw();
+  });
+
+  it('should be set value out of index success', function () {
+    var linkedList = new LinkedList();
+
+    linkedList.add(1);
+    linkedList.add(2);
+    
+    expect(function() { 
+      linkedList.set(100, {});
+    }).throw();
+    
+    expect(function() { 
+      linkedList.set(-1, {});
+    }).throw();
+  });
 
   it('should be add values and get last element success', function () {
     var linkedList = new LinkedList();
@@ -66,11 +126,23 @@ describe("A test suite LinkedList", function () {
 
     assert.equal(4, linkedList.get(3).value);
 
-    linkedList.addAt(3, 10);
+    linkedList.addAt(3, 13);
 
-    assert.equal(10, linkedList.get(3).value);
+    assert.equal(13, linkedList.get(3).value);
+    
+    linkedList.addAt(0, 14);
+    
+    assert.equal(14, linkedList.get(0).value);
 
-    assert.equal(4, linkedList.get(4).value);
+    var index = linkedList.length - 1;
+       
+    linkedList.addAt(index, 15);
+    
+    assert.equal(15, linkedList.get(index+1).value);
+
+    assert.equal(4, linkedList.get(5).value);
+       
+    assert.equal(6, linkedList.get(index).value);
   });
 
   it('should be remove value and get element success', function () {
@@ -255,8 +327,11 @@ describe("A test suite LinkedList", function () {
     linkedList.add(2);
 
     linkedList.set(0, 2);
+    linkedList.set(1, 2);
     linkedList.set(2, 2);
+    linkedList.set(3, 2);
     linkedList.set(4, 2);
+    linkedList.set(5, 2);
 
     var current = linkedList.first();
 
@@ -279,8 +354,9 @@ describe("A test suite LinkedList", function () {
     var iterator = linkedList.iterator();
 
     while (iterator.hasNext()) {
+      var index = iterator.nextIndex();
       var current = iterator.next();
-      assert.equal(iterator.nextIndex() - 1, current.value);
+      assert.equal(index, current.value);
     }
   });
 
@@ -297,5 +373,18 @@ describe("A test suite LinkedList", function () {
     linkedList.forEach(function (index, node) {
       assert.equal(index, node.value);
     });
+  });
+
+  it('should be add values and forEach invalid predicate success', function () {
+    var linkedList = new LinkedList();
+
+    linkedList.add(0);
+    linkedList.add(1);
+    linkedList.add(2);
+    linkedList.add(3);
+    linkedList.add(4);
+    linkedList.add(5);
+
+    linkedList.forEach({});
   });
 });

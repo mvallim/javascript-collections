@@ -98,6 +98,14 @@ describe('A test suite Heap', function () {
 
     assert.equal(6, heapMax.length)
   })
+  
+  it('should be peek empty heap success', function () {
+    var heapMax = new Heap(function (a, b) {
+      return b - a
+    })
+
+    assert.equal(null, heapMax.peek())
+  })
 
   it('should be add values and empty heap success', function () {
     var heapMax = new Heap(function (a, b) {

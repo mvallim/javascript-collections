@@ -88,7 +88,7 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
   addAt : {
     value : function (index, value) {
       var node = new LinkedListNode(value);
-
+      
       if (index < 0 || index > this._size) {
         throw "IndexOutOfBoundsException";
       } else if (index == 0) {
@@ -136,9 +136,7 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
             prev.next = current.next;
           }
 
-          if (next != undefined) {
-            next.prev = current.prev;
-          }
+          next.prev = current.prev;
 
           this._size--;
 
@@ -164,10 +162,7 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
         }
       } else if (index == this._size - 1) {
         this._tail = this._tail.prev;
-
-        if (this._tail != undefined) {
-          this._tail.next = undefined;
-        }
+        this._tail.next = undefined;
       } else {
         var current = this._head;
 
@@ -193,7 +188,7 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
   },
 
   get : {
-    value : function (index) {
+    value : function (index) {      
       if (index < 0 || index >= this._size) {
         throw "IndexOutOfBoundsException";
       } else if (index == 0) {
