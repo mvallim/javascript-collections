@@ -45,8 +45,10 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     enumerable : false,
     configurable : false,
     writable : false
-  }, first: {
-    value: function () {
+  },
+  
+  first : {
+    value : function () {
       return this._head;
     },
     enumerable : false,
@@ -264,5 +266,4 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     },
     configurable : false
   }
-})
-;
+});
