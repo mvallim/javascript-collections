@@ -355,8 +355,8 @@ describe("A test suite LinkedList", function () {
 
     while (iterator.hasNext()) {
       var index = iterator.nextIndex();
-      var current = iterator.next();
-      assert.equal(index, current.value);
+      var next = iterator.next();
+      assert.equal(index, next.value);
     }
   });
 

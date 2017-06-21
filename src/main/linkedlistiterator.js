@@ -2,8 +2,7 @@ function LinkedListIterator(linkedList) {
   BaseCollection.call(this, {
     _list : linkedList,
     _index : 0,
-    _curr : linkedList.first(),
-    _next : linkedList.first().next
+    _curr : linkedList.first()
   });
 }
 
@@ -41,7 +40,7 @@ LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
 
   hasNext : {
     value : function () {
-      return !(this._index == this._list.length);
+      return !(this._index == this._list.length) && (this._curr != undefined);
     },
     enumerable : false,
     configurable : false,
@@ -50,10 +49,13 @@ LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
 
   next : {
     value : function () {
-      this._index++;
+      var current = this._curr;
+
       this._curr = this._next;
-      this._next = this._curr.next;
-      return this.curr;
+
+      this._index++;
+
+      return current;
     },
     enumerable : false,
     configurable : false,
