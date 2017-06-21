@@ -2,7 +2,8 @@ function HashSet(compare) {
   BaseCollection.call(this, {
     _dataStore : {},
     _size : 0,
-    _keys : []
+    _keys : [],
+    _values : []
   })
 }
 
@@ -23,7 +24,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     configurable : false,
     writable : true
   },
-  
+
   _keys : {
     value : undefined,
     enumerable : true,
@@ -31,34 +32,51 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
-  _hashCode : {
-    value : function (value) {
-      var hash = 1;
+  _values : {
+    value : undefined,
+    enumerable : true,
+    configurable : false,
+    writable : true
+  },
 
-      switch (typeof (value)) {
-      case "object":
-        if (value == null) {
-          hash ^= 13;
-        } else {
-          for ( var property in value) {
-            hash ^= 17 + this._hashCode(value[property]);
-          }
-        }
-        break;
-      case "boolean":
-        hash ^= 19 + this._hashCode(JSON.stringify(value));
-        break;
-      case "number":
-        hash ^= 23 + this._hashCode(JSON.stringify(value));
-        break;
-      case "string":
-        for (var i = 0; i < value.length; i++) {
-          hash ^= 29 + value.charCodeAt(i);
-        }
-        break;
+  hashCode : {
+    value : function (value) {
+      const types = {
+        OBJECT : "object",
+        BOOLEAN : "boolean",
+        NUMBER : "number",
+        STRING : "string"
       }
 
-      return JSON.stringify(hash >> 0);
+      const prime = 1000000007;
+      var hash = 1;
+      var calculate = 0;
+
+      switch (typeof (value))
+        {
+        case types.OBJECT:
+          if (value == null) {
+            calculate = 0;
+          } else {
+            for ( var property in value) {
+              calculate = this.hashCode(value[property]);
+            }
+          }
+          break;
+        case types.BOOLEAN:
+          calculate = this.hashCode(JSON.stringify(value));
+          break;
+        case types.NUMBER:
+          calculate = this.hashCode(JSON.stringify(value));
+          break;
+        case types.STRING:
+          for (var i = 0; i < value.length; i++) {
+            calculate += value.charCodeAt(i);
+          }
+          break;
+        }
+      
+      return (hash * prime) + (calculate ^ (calculate >>> 52));
     },
     enumerable : false,
     configurable : false,
@@ -98,33 +116,46 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     configurable : false,
     writable : false
   },
-  
-  map : {
+
+  values : {
+    value : function () {
+      return this._values;
+    },
+    enumerable : true,
+    configurable : false,
+    writable : false
+  },
+
+  entries : {
     value : function () {
       var sope = this;
-      var map = {};
+      var entries = {};
+
+      this._keys.forEach(function (key, index) {
+        entries[key] = sope._dataStore[key];
+      });
       
-      this._keys.forEach(function(key, index){
-        map[key] = sope._dataStore[key]; 
-      })
-      
-      return map;
+      return entries;
     },
     enumerable : false,
     configurable : false,
     writable : false
   },
-  
+
   add : {
-    value : function (value) {     
-      if (!this.contains(value)) {
-        var key = this._hashCode(value);
-        this._dataStore[key] = value;
-        this._keys.push(key);
-        this._size++;
-      } else {
-        throw "KeyAlredyExistsException";
+    value : function (value) {
+      var key = this.hashCode(value);
+
+      if (this.containsKey(key)) {
+        return false;
       }
+
+      this._dataStore[key] = value;
+      this._keys.push(key);
+      this._values.push(value);
+      this._size++;
+
+      return this.containsKey(key);
     },
     enumerable : false,
     configurable : false,
@@ -133,21 +164,22 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
 
   remove : {
     value : function (value) {
-      if (this.contains(value)) {
-        var key = this._hashCode(value);
-        
-        var index = this._keys.indexOf(key);
-        
-        if(index != -1) {
-          this._keys.splice(index, 1);
-        }
-        
-        delete this._dataStore[key];
-        
-        this._size--;
-      } else {
-        throw "KeyOutOfBoundsException";
+      var key = this.hashCode(value);
+
+      if (!this.containsKey(key)) {
+        return false;
       }
+
+      var index = this._keys.indexOf(key);
+
+      if (index >= 0) {
+        this._keys.splice(index, 1);
+        this._values.splice(index, 1);
+        delete this._dataStore[key];
+        this._size--;
+      }
+
+      return !this.containsKey(key);
     },
     enumerable : false,
     configurable : false,
@@ -156,8 +188,53 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
 
   contains : {
     value : function (value) {
-      var key = this._hashCode(value);
+      var key = this.hashCode(value);
       return key in this._dataStore;
+    },
+    enumerable : false,
+    configurable : false,
+    writable : false
+  },
+
+  containsKey : {
+    value : function (key) {
+      return key in this._dataStore;
+    },
+    enumerable : false,
+    configurable : false,
+    writable : false
+  },
+
+  union : {
+    value : function (hashset) {
+      throw "NotImplementedException";
+    },
+    enumerable : false,
+    configurable : false,
+    writable : false
+  },
+
+  intersect : {
+    value : function (hashset) {
+      throw "NotImplementedException";
+    },
+    enumerable : false,
+    configurable : false,
+    writable : false
+  },
+
+  except : {
+    value : function (hashset) {
+      throw "NotImplementedException";
+    },
+    enumerable : false,
+    configurable : false,
+    writable : false
+  },
+
+  compare : {
+    value : function (a, b) {
+      throw "NotImplementedException";
     },
     enumerable : false,
     configurable : false,
@@ -183,6 +260,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
       this._dataStore = {};
       this._size = 0;
       this._keys = [];
+      this._values = [];
     },
     configurable : false
   }

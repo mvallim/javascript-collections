@@ -2,7 +2,7 @@ function HashSetIterator(hashset) {
   BaseCollection.call(this, {
     _hashset : hashset,
     _keys : hashset.keys(),
-    _map : hashset.map(),
+    _entries : hashset.entries(),
     _index : 0
   });
 }
@@ -25,7 +25,7 @@ HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
   
-  _map : {
+  _entries : {
     value : undefined,
     enumerable : false,
     configurable : false,
@@ -38,7 +38,7 @@ HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
     configurable : false,
     writable : true
   },
-
+  
   hasNext : {
     value : function () {
       return !this._index == this._keys.length;
@@ -50,7 +50,7 @@ HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
 
   next : {
     value : function () {
-      var next = this._map[this._keys[this._index]];
+      var next = this._entries[this._keys[this._index]];
       this._index++;
       return next;
     },

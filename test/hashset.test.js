@@ -7,7 +7,7 @@ describe('A test suite HashSet', function () {
   it('should be add values success', function () {
     var hashSet = new HashSet();
 
-    hashSet.add({
+    assert.equal(true, hashSet.add({
       p0 : null,
       p1 : "p1",
       p2 : 1,
@@ -15,13 +15,13 @@ describe('A test suite HashSet', function () {
       p4 : {
         pp1 : "pp1"
       }
-    });
-    hashSet.add(null);
-    hashSet.add("string");
-    hashSet.add(100);
-    hashSet.add(100.12);
-    hashSet.add(true);
-    hashSet.add(false);
+    }));
+    assert.equal(true, hashSet.add(null));
+    assert.equal(true, hashSet.add("string"));
+    assert.equal(true, hashSet.add(100));
+    assert.equal(true, hashSet.add(100.12));
+    assert.equal(true, hashSet.add(true));
+    assert.equal(true, hashSet.add(false));
 
     assert.equal(7, hashSet.length);
   });
@@ -48,13 +48,13 @@ describe('A test suite HashSet', function () {
       }
     };
 
-    hashSet.add(obj1);
-    hashSet.add(obj2);
+    assert.equal(true, hashSet.add(obj1));
+    assert.equal(true, hashSet.add(obj2));
 
     assert.equal(2, hashSet.length);
 
-    hashSet.remove(obj1);
-    hashSet.remove(obj2);
+    assert.equal(true, hashSet.remove(obj1));
+    assert.equal(true, hashSet.remove(obj2));
 
     assert.equal(0, hashSet.length);
   });
@@ -81,11 +81,148 @@ describe('A test suite HashSet', function () {
       }
     };
 
-    hashSet.add(obj1);
-    hashSet.add(obj2);
+    assert.equal(true, hashSet.add(obj1));
+    assert.equal(true, hashSet.add(obj2));
 
     assert.equal(true, hashSet.contains(obj1));
     assert.equal(true, hashSet.contains(obj2));
+  });
+
+  it('should be add values and check contains key success', function () {
+    var hashSet = new HashSet();
+
+    var obj1 = {
+      p0 : null,
+      p1 : "p1",
+      p2 : 1,
+      p3 : true,
+      p4 : {
+        obj : "1"
+      }
+    };
+    var obj2 = {
+      p0 : null,
+      p1 : "p1",
+      p2 : 1,
+      p3 : true,
+      p4 : {
+        obj : "2"
+      }
+    };
+
+    var key1 = hashSet.hashCode(obj1);
+    var key2 = hashSet.hashCode(obj2);
+
+    assert.equal(true, hashSet.add(obj1));
+    assert.equal(true, hashSet.add(obj2));
+
+    assert.equal(true, hashSet.containsKey(key1));
+    assert.equal(true, hashSet.containsKey(key2));
+  });
+
+  it('should be add values and check keys success', function () {
+    var hashSet = new HashSet();
+
+    var obj1 = {
+      p0 : null,
+      p1 : "p1",
+      p2 : 1,
+      p3 : true,
+      p4 : {
+        obj : "1"
+      }
+    };
+    var obj2 = {
+      p0 : null,
+      p1 : "p1",
+      p2 : 1,
+      p3 : true,
+      p4 : {
+        obj : "2"
+      }
+    };
+
+    var map = {};
+    map[hashSet.hashCode(obj1)] = true;
+    map[hashSet.hashCode(obj2)] = true;
+
+    assert.equal(true, hashSet.add(obj1));
+    assert.equal(true, hashSet.add(obj2));
+
+    hashSet.keys().forEach(function (key) {
+      assert.equal(true, map[key]);
+    });
+  });
+  
+  it('should be add values and check values success', function () {
+    var hashSet = new HashSet();
+
+    var obj1 = {
+      p0 : null,
+      p1 : "p1",
+      p2 : 1,
+      p3 : true,
+      p4 : {
+        obj : "1"
+      }
+    };
+    var obj2 = {
+      p0 : null,
+      p1 : "p1",
+      p2 : 1,
+      p3 : true,
+      p4 : {
+        obj : "2"
+      }
+    };
+
+    var map = {};
+    map[hashSet.hashCode(obj1)] = obj1;
+    map[hashSet.hashCode(obj2)] = obj2;
+
+    assert.equal(true, hashSet.add(obj1));
+    assert.equal(true, hashSet.add(obj2));
+
+    hashSet.values().forEach(function (value) {
+      var key = hashSet.hashCode(value);
+      assert.equal(value, map[key]);
+    });
+  });
+  
+  it('should be add values and check entries success', function () {
+    var hashSet = new HashSet();
+
+    var obj1 = {
+      p0 : null,
+      p1 : "p1",
+      p2 : 1,
+      p3 : true,
+      p4 : {
+        obj : "1"
+      }
+    };
+    var obj2 = {
+      p0 : null,
+      p1 : "p1",
+      p2 : 1,
+      p3 : true,
+      p4 : {
+        obj : "2"
+      }
+    };
+
+    var map = {};
+    map[hashSet.hashCode(obj1)] = obj1;
+    map[hashSet.hashCode(obj2)] = obj2;
+
+    assert.equal(true, hashSet.add(obj1));
+    assert.equal(true, hashSet.add(obj2));
+
+    var entries = hashSet.entries();
+    
+    for(var property in entries){
+      assert.equal(map[property], entries[property]);
+    }
   });
 
   it('should be add values and clear success', function () {
@@ -110,8 +247,8 @@ describe('A test suite HashSet', function () {
       }
     };
 
-    hashSet.add(obj1);
-    hashSet.add(obj2);
+    assert.equal(true, hashSet.add(obj1));
+    assert.equal(true, hashSet.add(obj2));
 
     hashSet.clear();
 
@@ -140,24 +277,24 @@ describe('A test suite HashSet', function () {
       }
     };
 
-    hashSet.add(obj1);
-    hashSet.add(obj2);
+    assert.equal(true, hashSet.add(obj1));
+    assert.equal(true, hashSet.add(obj2));
 
-    hashSet.remove(obj1);
-    hashSet.remove(obj2);
+    assert.equal(true, hashSet.remove(obj1));
+    assert.equal(true, hashSet.remove(obj2));
 
     assert.equal(true, hashSet.empty);
   });
-  
+
   it('should be add values and iterate success', function () {
     var hashSet = new HashSet();
 
-    hashSet.add(0);
-    hashSet.add(1);
-    hashSet.add(2);
-    hashSet.add(3);
-    hashSet.add(4);
-    hashSet.add(5);
+    assert.equal(true, hashSet.add(0));
+    assert.equal(true, hashSet.add(1));
+    assert.equal(true, hashSet.add(2));
+    assert.equal(true, hashSet.add(3));
+    assert.equal(true, hashSet.add(4));
+    assert.equal(true, hashSet.add(5));
 
     var iterator = hashSet.iterator();
 
@@ -170,12 +307,12 @@ describe('A test suite HashSet', function () {
   it('should be add values and forEach success', function () {
     var hashSet = new HashSet();
 
-    hashSet.add(0);
-    hashSet.add(1);
-    hashSet.add(2);
-    hashSet.add(3);
-    hashSet.add(4);
-    hashSet.add(5);
+    assert.equal(true, hashSet.add(0));
+    assert.equal(true, hashSet.add(1));
+    assert.equal(true, hashSet.add(2));
+    assert.equal(true, hashSet.add(3));
+    assert.equal(true, hashSet.add(4));
+    assert.equal(true, hashSet.add(5));
 
     hashSet.forEach(function (index, node) {
       assert.equal(index, node.value);
