@@ -1,11 +1,11 @@
 function Heap (compare) {
-  BaseObject.call(this, {
+  BaseCollection.call(this, {
     _dataStore: [],
     _compare: compare
   })
 }
 
-Heap.prototype = Object.create(BaseObject.prototype, {
+Heap.prototype = Object.create(BaseCollection.prototype, {
 
   constructor: Heap,
 

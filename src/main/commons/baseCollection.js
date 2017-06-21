@@ -1,11 +1,11 @@
-//TODO: Change this implementation to BaseCollection
-function BaseObject (cfg) {
-  BaseObject.prototype.init.call(this, cfg || {})
+//TODO: Change this implementation to a meaning BaseCollection
+function BaseCollection (cfg) {
+  BaseCollection.prototype.init.call(this, cfg || {})
 }
 
-BaseObject.prototype = Object.create(null, {
+BaseCollection.prototype = Object.create(null, {
 
-  constructor: BaseObject,
+  constructor: BaseCollection,
 
   init: {
     value: function (cfg) {

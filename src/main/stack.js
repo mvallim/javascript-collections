@@ -1,10 +1,10 @@
 function Stack () {
-  BaseObject.call(this, {
+  BaseCollection.call(this, {
     _dataStore: []
   })
 }
 
-Stack.prototype = Object.create(BaseObject.prototype, {
+Stack.prototype = Object.create(BaseCollection.prototype, {
 
   constructor: Stack,
 

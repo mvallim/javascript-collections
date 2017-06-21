@@ -1,10 +1,10 @@
 function Queue () {
-  BaseObject.call(this, {
+  BaseCollection.call(this, {
     _dataStore: []
   })
 }
 
-Queue.prototype = Object.create(BaseObject.prototype, {
+Queue.prototype = Object.create(BaseCollection.prototype, {
 
   constructor: Queue,
 

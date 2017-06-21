@@ -1,5 +1,5 @@
 function LinkedListIterator(linkedList) {
-  BaseObject.call(this, {
+  BaseCollection.call(this, {
     _list : linkedList,
     _index : 0,
     _curr : linkedList.first(),
@@ -7,7 +7,7 @@ function LinkedListIterator(linkedList) {
   });
 }
 
-LinkedListIterator.prototype = Object.create(BaseObject.prototype, {
+LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
 
   constructor : LinkedListIterator,
 

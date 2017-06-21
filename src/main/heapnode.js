@@ -1,12 +1,12 @@
 function HeapNode (items, value, index) {
-  BaseObject.call(this, {
+  BaseCollection.call(this, {
     _value: value,
     _index: index,
     _dataStore: items
   })
 }
 
-HeapNode.prototype = Object.create(BaseObject.prototype, {
+HeapNode.prototype = Object.create(BaseCollection.prototype, {
 
   constructor: HeapNode,
 

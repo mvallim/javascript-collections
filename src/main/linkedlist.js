@@ -1,10 +1,10 @@
 function LinkedList() {
-  BaseObject.call(this, {
+  BaseCollection.call(this, {
     _size : 0
   });
 }
 
-LinkedList.prototype = Object.create(BaseObject.prototype, {
+LinkedList.prototype = Object.create(BaseCollection.prototype, {
 
   constructor : LinkedList,
 
@@ -34,7 +34,7 @@ LinkedList.prototype = Object.create(BaseObject.prototype, {
   forEach : {
     value : function (callback) {
       var iterator = this.iterator();
-      
+
       while (iterator.hasNext()) {
         var index = iterator.nextIndex();
         var node = iterator.next();
@@ -45,10 +45,8 @@ LinkedList.prototype = Object.create(BaseObject.prototype, {
     enumerable : false,
     configurable : false,
     writable : false
-  },
-  
-  first : {
-    value : function () {
+  }, first: {
+    value: function () {
       return this._head;
     },
     enumerable : false,
@@ -266,4 +264,5 @@ LinkedList.prototype = Object.create(BaseObject.prototype, {
     },
     configurable : false
   }
-});
+})
+;

@@ -1,10 +1,10 @@
 function LinkedListNode(value) {
-  BaseObject.call(this, {
+  BaseCollection.call(this, {
     _value : value
   });
 }
 
-LinkedListNode.prototype = Object.create(BaseObject.prototype, {
+LinkedListNode.prototype = Object.create(BaseCollection.prototype, {
 
   constructor : LinkedListNode,
 
@@ -45,7 +45,7 @@ LinkedListNode.prototype = Object.create(BaseObject.prototype, {
     },
     set : function (node) {
       this._next = node;
-    },    
+    },
     configurable : false
   },
 
@@ -58,4 +58,5 @@ LinkedListNode.prototype = Object.create(BaseObject.prototype, {
     },
     configurable : false
   }
-});
+})
+;
