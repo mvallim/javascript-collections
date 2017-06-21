@@ -31,13 +31,6 @@ LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
-  _next : {
-    value : undefined,
-    enumerable : false,
-    configurable : false,
-    writable : true
-  },
-
   hasNext : {
     value : function () {
       return !(this._index == this._list.length) && (this._curr != undefined);
@@ -51,8 +44,8 @@ LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
     value : function () {
       var current = this._curr;
 
-      this._curr = this._next;
-
+      this._curr = this._curr.next;
+      
       this._index++;
 
       return current;
