@@ -7,6 +7,9 @@ before_deploy:
 - git config --global user.email "${EMAIL}"
 - git config --global user.name "${USER}"
 - npm version patch
+- git add .
+- git commit -m "Deployed new version from Travis"
+- git push --quiet "https://${GH_TOKEN}@${GITHUB_REFERENCE}"
 deploy:
   provider: npm
   email: $EMAIL
@@ -14,6 +17,7 @@ deploy:
   skip_cleanup: true
   on:
     repo: mvallim/javascript-collections
+after_deploy:
 env:
   global:
   - secure: ssJtsw+iW+Z1YbUUZhbKZ7gIM+Qw9CUcAEkMJzQq/PiDFA51QBo3qFpB7/jLHGBcR+eMnCTzsHMzrBp/LiOfTDTfraxXW9v9adLapXOro4gduJ+mRYSWZ8dsCGiD3Z608WeuCPKG248uFqnNHidbCrPVbsgumyzXuP++RoEv7628Imlm0biw7mNyZkdMUzXryhsQIKmV2vgAPkNh2AbN5QZtVSqv90voUnJvMZmld0+ucciBnn0/tLFlaHX+OIqCSDcWohxXCMSMEnRbgz1NNyZOTD0R953kOYz01i5+x6AqBGYC/IxlaU4Z1MZv329LpLvTIpnqYxX1LPhedPIAZEwHr8YJGxROgPZ6SSibmjQsnhvxWT/HVlDHZzXPA47zWvwO081mfKxT+43bD0MSdZC2LA/PvHTjcbEdq8JlCAM9KWTUI6CuEkzbXJ6vLLjyPE81gZZJYlPUj+N+SGqwdYkk9oybso5u9ZbAMf2HtHJOSqg3hR4P1DnSKFFZoz4XHtXTMvMywvU1NYHEABRN68lbl57oAC4Rejit+sP+aCarOW/9ztCYbV3Yp/EABwi/QKamQ+wuHt1Q3+PrjBDPQQI4VPy44ohQ2XHHZYy5QQ7DFdnZGkT6QB2+Ly2uuV0r/5S9lkBn6OzwBYoGFMd5+Ouwby3esMoH1soCHsxgb6c=
