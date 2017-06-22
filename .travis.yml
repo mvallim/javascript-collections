@@ -7,7 +7,7 @@ before_deploy:
 - git config --global user.email ${EMAIL}
 - git config --global user.name ${USER}
 - git config --global push.default matching
-- npm version prerelease
+- npm version patch
 deploy:
   provider: npm
   email: $EMAIL
@@ -17,6 +17,7 @@ deploy:
     repo: mvallim/javascript-collections
     node: '6'
 after_deploy:
+- git push --tags "https://${GITHUB_TOKEN}@${GITHUB_REFERENCE}"
 - git push "https://${GITHUB_TOKEN}@${GITHUB_REFERENCE}"
 env:
   global:
