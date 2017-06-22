@@ -1,6 +1,16 @@
 language: node_js
 node_js:
-- "6"
+- '6'
+after_success:
+- coveralls < coverage/report-lcov/lcov.info
+- git config --global user.email ${EMAIL}
+- git config --global user.name ${USER}
+- npm run release
+- cd dist
+- git init
+- git add .
+- git commit -m "Deployed new version from Travis"
+- git push --force --quiet "https://${GH_TOKEN}@${GITHUB_REFERENCE}" master > /dev/null 2>&1
 jobs:
   include:
   - stage: npm deploy
@@ -8,12 +18,15 @@ jobs:
     script: echo "Deploying to npm ..."
     deploy:
       provider: npm
-      email: tischer@gmail.com
+      email: "$EMAIL"
       api_key:
-        secure: $NPM_API_KEY
+        secure: "$NPM_API_KEY"
       on:
         all_branches: true
-after_success: coveralls < coverage/report-lcov/lcov.info
 env:
   global:
-    secure: VZfUWD3BA+ufNvHXzd6Ik3QTaoYFdKI/zWwL0g6RZM4NPteYyDIsxZQbCnMOn4Vb4IcNYU8SdTRLxf9Q142jNj2KWg/JNH41t3BpGxNlrKUgyF7od111+oxJJ4RnPP0jDs2aI5NEIS2Qh6UgqSwy7hwKOz296Rv4XGm/KZE2r/V8RIptdVyTHnkpo7fhCp1c7HzMBvg1/f5HJKev3YoaBuHL3Y5HccrNXhaIzJEyRMf+apT3xPAINh0zFMEhYhLeowBluGixneA1Jw/O6TOoGrOYS3TfTpU+vnKYnKUgtOtuwSBMpJeec/0mNhr2cTwm/ZCZTm/Hvd6jc0rgNkhJURCugNU7H1Ms4qOnNS7/W1WvBRu1swY1QjYyESxZO9A2QYxG1snfCpTWTjR18wQf6OxLNliYamnsOCmkcy0Z29vw9VmCF6WzO66eXfYQso6Q9D5K87veX2d+xVqPUidAQ4bUQvXWYVAjtZmofS8FSCEIFfljXC0024dIv/+I4uiMu+7+Pb9zDwyVJBs1feimWCUTCIfTZ9L+wDMSn3HDbrrmTK62PhnFCSitemFarbgEftR/0ljrk5WXSF4BA+RS84jPIVwlN3dCQPNcq1FbMp21VORbQFfDpKda7Kxo0vAjV0MPVm2nXUzvhW4m0XkkUewHXo1HIx9wDTtN6raolSE=
+  - secure: ssJtsw+iW+Z1YbUUZhbKZ7gIM+Qw9CUcAEkMJzQq/PiDFA51QBo3qFpB7/jLHGBcR+eMnCTzsHMzrBp/LiOfTDTfraxXW9v9adLapXOro4gduJ+mRYSWZ8dsCGiD3Z608WeuCPKG248uFqnNHidbCrPVbsgumyzXuP++RoEv7628Imlm0biw7mNyZkdMUzXryhsQIKmV2vgAPkNh2AbN5QZtVSqv90voUnJvMZmld0+ucciBnn0/tLFlaHX+OIqCSDcWohxXCMSMEnRbgz1NNyZOTD0R953kOYz01i5+x6AqBGYC/IxlaU4Z1MZv329LpLvTIpnqYxX1LPhedPIAZEwHr8YJGxROgPZ6SSibmjQsnhvxWT/HVlDHZzXPA47zWvwO081mfKxT+43bD0MSdZC2LA/PvHTjcbEdq8JlCAM9KWTUI6CuEkzbXJ6vLLjyPE81gZZJYlPUj+N+SGqwdYkk9oybso5u9ZbAMf2HtHJOSqg3hR4P1DnSKFFZoz4XHtXTMvMywvU1NYHEABRN68lbl57oAC4Rejit+sP+aCarOW/9ztCYbV3Yp/EABwi/QKamQ+wuHt1Q3+PrjBDPQQI4VPy44ohQ2XHHZYy5QQ7DFdnZGkT6QB2+Ly2uuV0r/5S9lkBn6OzwBYoGFMd5+Ouwby3esMoH1soCHsxgb6c=
+  - secure: Mgi2ADQlIo01vYtZ3ipeqlOg9cVp91Szc4UMOL2Zj5wV2amxQc+P0Zs9J7P+XYy1vGDLlatFHBEoLVq+uBlnJgF25pf3JAcy/pzp/YIkbSKmBq8cGf1iwMY9Xle3DV7CzzdDBWISjmZn9U2WU4i8MGV9EOV95KRbGRlgYUheBb0j3nzuaL3ecdDktowPUrM5cv2PqXQybjDb+ATMIQaPZWGBCuRxotZWU9pEPBFy+MqoeobOoPXtETSLN+dQBP0blD6tBrYUqpdAB1v8Q2PVHQpYvcxuUjyxhdIVe+M0APSkeo8A+j1Ir0Dx5M/nMzNI32/ILi2hu7ZDxtvRJCm949Hqi4ZCplsNKTawIb/Xk5Bf+MdF7jX5c/GER7VmgJZ69ZTcnvHlpE30isiSZhVAHpWPuqlbXNhb2VXOlFEWafcMvmOfOw9Jiw7Y7cJoo8v/ZJswUCNW4W5NejRgy+9psJAyytHtj1QO5cE1G0pqoOOkhDkvs+J6TY3eFhPGmYN4pRSL23G6ooZOT75Q5xW/gUfxW3b0ERpDD4K2c1hq2POT1E0fZnY8FS3t+xFPvn2YRNE/p5vQmcpjLVmdCZrQmT4DI8K8X/EnoFV/gLgxT/lemgGAZyIdgNrcNs9urI+a8T4LysqYXMRnN79FpP30pTQ8QXLHrquxalIsWvDx+uQ=
+  - secure: rOWVXc97sx/zp1Yp0rr0PUZ4aAbSUnK2n9wspytjKFROkl+FcTNQ7T50xuG5XUvHmpCLpg8XstV8n7BNZ5H1uaFMmW0rzwvOyF/DdaxHCmOhw0zw6zWNEc9IRjgqFfOA2k/U21WtP9PPNfRfNpOkJEV6dgQRHqDXHFvz6TKL/FwvD+/xwxbpnMGOah0A5caklirRlror64HtK/wcHLbBSoEMa5OzJM1NnssMi+8sAnYCK695vczhe1GY7AmbE/HQCPzWUaGwEEXWIviuMntV6zYfLGon4OwZKeUIkYpMVqsi/kJdZWIa1RGHvd03H4wuhiwJ7iKHf8hGdNZsL4hdKlw9v9ImD1PhP3DLIUhb2htP+yrUngOe3+S2ZBPXIXZ+MXAdoU4mLMQxhh2sUFw5C+IpFPDJSXZObx/zMrx2TZkaq4UUrR0ukPc89+M+MX+My/cCCBXrXUC9041ph+YRCrFLkcV2Wv+VSdS/2BEpyYoQVYf7zpsmmVA5IhM63BeA0eiL18ffdn5zlQXVnLJJBFHU1INupdKxrlzCUdY3d7OJ99+xq87D6hGTwbxeAoyqEQVf/WqNiIW2JV9iB4BO6i2k6SWrjMysQ1luSi4zsnMdXnB9V7ngF81bckfNS38JQ03hgRdORYxQ6872CdeHoybY0EygMIjNo/INa+3lQRc=
+  - secure: VvVMRjymlXL8p+i1EbNRhcVCGusZPsj0MB9uWzU6DdLClANzgc4kKWH6iK73v5v7QIvJ2UK26OLkcYuMoY+pIw4IS20wsnZkfRX+Qc4Tz6t1OUAkEHKUye9wb0e2ssVONVnrjADiq7IBDIchlaibIzXoN7o58tSKxLbN3JLhXBqv5/n74vaHqto7FDa6TzFyI2g45S1L/aLVDBtZn1APCgpHDH8/kyNDj3LXP2YeovQRIP6mYaSn0/loGx2F4fXc4+Y/Rc2Ju//0VjeNAcd9qX1utvUnVbiucbV22gTsqSjssf2EIOvEyOGnxCW0pkQHEw29n3xhm/jYGhH3QneD0FOiibGJ8zZvexC7qzVEwnPAJuiuQe8FTg+K7PYAssuBebYw/S6rWR41g9Xv/J5zAEhmLCh6zGOe8s3pJHkVdmEwQ3rNyqSnqghwYdsEQyLry6iOVO0lwn18MtFabRHrXR/mGaxWWaFgyqg/Jr2yjPWm+EnM3c4Y61RJgWWTquV0K9lWrGO9AQRmJuHASIgumCZvbin+LMcoWc+bzftMTWbMHmJCKpEvXizJBrgffZSKlzEzDLtfdoQsOyJQNPqjl7BfBZ7LzFbGGBEOyJtLVl/JkEayYtlAiwzakyHgpm5g8sF+UjBoYiosqPkhvc3ELnqn4XW3AnSTVfUaSyRXLZM=
+  - secure: MZiJdizNmY0MWCjvK/yjpKbLKuS3rQy5C8XQCc5sfh37Imxsju9HwskYGtH5Jz6ycGoEw7vD4/Zjt9Am2xzlgcqQPOuJKVIw+2tvHQB34ZCcFUQtzT5HU6PIABDxo9WT4ugpHioIuwcb0gtfigQ+R/rg16Ty/VXt3qvcrfko09Dt8wcjyZsLGyojaO3x647V+1moZIORNc7Nx4YHuLJD1w4kOTPyMITbvUR94LMIcNmqjvBy98+ixnDf+bfJiUkJduSfsfP58nX13ReT+B7bpKVaUm1+mlwXF7FY46sJbUqZ0upeUW455rLLhuaNP4GsKMwAGe5UKqSW3uJL9SSvZD6ajgcnAgnZBW3aA8c3+uR8SAwOrEPcZAxg/+Ee7C18k3XqjjM82GWwBRjXjcm5rPbLszLVpBDzuNMYm9/spRyVs2tFESRM2+XFcnZd5b7yf4i89owN7+8jj3F+tCrvP3C+SXn9Jw66ToIGhW0ONiZUgzr0h0ntGCokiMVk1Fspdu7MiV0+zkWOwBJzKhPLcWLVUexQ/npGP857K7Kk0dpM0QDkn4iznD5Ccv+LS6QHBhrCNqeDmK7IEDD2NqZ9mvDtVoEEui7n01COhQ4xQ8dyEc7dp41VArn2jI5wB9rdf/gsQdh7CAxOvUuiR4Bjb71kECBc7dsEhDUqMFz+IzI=
