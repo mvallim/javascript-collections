@@ -4,8 +4,9 @@ node_js:
 after_success:
 - coveralls < coverage/report-lcov/lcov.info
 before_deploy:
-- git config --global user.email "${EMAIL}"
-- git config --global user.name "${USER}"
+- git config --global user.email ${EMAIL}
+- git config --global user.name ${USER}
+- git config --global push.default matching
 - npm version patch
 - git add .
 - git push --quiet "https://${GH_TOKEN}@${GITHUB_REFERENCE}"
