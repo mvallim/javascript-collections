@@ -4,7 +4,9 @@ node_js:
   - '7'
 deploy:
   provider: npm
-  api_key: $NPM_API_KEY 
+  email: tischer@gmail.com
+  api_key:
+    secure: $NPM_API_KEY 
 after_success: coveralls < coverage/report-lcov/lcov.info
 env:
   global:
