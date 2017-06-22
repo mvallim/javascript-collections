@@ -1,38 +1,40 @@
 {
-  "name": "javascript-collections",
-  "version": "0.0.2",
-  "description": "JavaScript Collections",
-  "browser": "dist/javascript-collections.min.js",
-  "main": "dist/javascript-collections.min.js",
-  "license": "GPL-3.0",
-  "scripts": {
-    "karma": "./node_modules/.bin/karma start",
-    "test": "npm run karma -- --single-run",
-    "start": "npm run karma",
-    "compile": "./node_modules/.bin/gulp",
-    "build": "npm test && npm run compile",
-    "publish": "npm publish"
-  },
-  "author": "Marcos Tischer Vallim <tischer@gmail.com>",
-  "contributors": [
-    "Rafael Malveis Ximenes <rmalveis@gmail.com>"
-  ],
-  "dependencies": {},
-  "devDependencies": {
-    "chai": "^4.0.2",
-    "coveralls": "^2.13.1",
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
-    "gulp-uglifyjs": "^0.6.2",
-    "isomorphic-fetch": "^2.2.1",
-    "karma": "^1.7.0",
-    "karma-chai": "^0.1.0",
-    "karma-coverage": "^1.1.1",
-    "karma-mocha": "^1.3.0",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "karma-verbose-reporter": "^0.0.6",
-    "mocha": "^3.4.2",
-    "phantomjs-prebuilt": "^2.1.14",
-    "phantomjs2": "^2.2.0"
-  }
+	"name": "javascript-collections",
+	"version": "0.0.2",
+	"description": "JavaScript Collections",
+	"browser": "dist/javascript-collections.min.js",
+	"main": "dist/javascript-collections.min.js",
+	"license": "GPL-3.0",
+	"scripts": {
+		"karma": "./node_modules/.bin/karma start",
+		"test": "npm run karma -- --single-run",
+		"start": "npm run karma",
+		"compile": "./node_modules/.bin/gulp",
+		"build": "npm test && npm run compile",
+		"publish": "npm publish"
+	},
+	"author": "Marcos Tischer Vallim <tischer@gmail.com>",
+	"contributors": [
+		"Rafael Malveis Ximenes <rmalveis@gmail.com>"
+	],
+	"dependencies": {
+		
+	},
+	"devDependencies": {
+		"chai": "^4.0.2",
+		"coveralls": "^2.13.1",
+		"gulp": "^3.9.1",
+		"gulp-clean": "^0.3.2",
+		"gulp-uglifyjs": "^0.6.2",
+		"isomorphic-fetch": "^2.2.1",
+		"karma": "^1.7.0",
+		"karma-chai": "^0.1.0",
+		"karma-coverage": "^1.1.1",
+		"karma-mocha": "^1.3.0",
+		"karma-phantomjs-launcher": "^1.0.4",
+		"karma-verbose-reporter": "^0.0.6",
+		"mocha": "^3.4.2",
+		"phantomjs-prebuilt": "^2.1.14",
+		"phantomjs2": "^2.2.0"
+	}
 }
