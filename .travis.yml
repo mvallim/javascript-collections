@@ -4,6 +4,8 @@ node_js:
 after_success:
 - coveralls < coverage/report-lcov/lcov.info
 before_deploy:
+- git config --global user.email "${EMAIL}"
+- git config --global user.name "${USER}"
 - npm version patch
 deploy:
   provider: npm
