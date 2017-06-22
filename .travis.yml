@@ -7,6 +7,7 @@ before_deploy:
 - git config --global user.email ${EMAIL}
 - git config --global user.name ${USER}
 - git config --global push.default matching
+- npm version prerelease
 deploy:
   provider: npm
   email: $EMAIL
@@ -14,8 +15,9 @@ deploy:
   skip_cleanup: true
   on:
     repo: mvallim/javascript-collections
+    node: '6'
 after_deploy:
-- git push --quiet "https://${GITHUB_TOKEN}@${GITHUB_REFERENCE}"
+- git push "https://${GITHUB_TOKEN}@${GITHUB_REFERENCE}"
 env:
   global:
   - secure: bR28V0okXQBk+pYNCxaYVwoKN3xJsuv1bO5eohvE9eQazx7QQdfQvU0CUJ+c1yQBjeJdwlgOxdu4phHyqKX2BePE32LFCUGEnq2ns+tlJiMByf/4p+LSSRJb/0Y978VZ0Tl/38TafhKIxcT9V14gzpfgWz7dlEuiX+uqKSlpXeGyFQFQpYawsteFdWaAw8xFuOseTu/Fdz4YVtETfgTJrAeYUutxx/8F+G+n2EnvYVKcqsj2WRXdgTlciQzainu/9jgoMFYXV8rBhoox3C6JnSKXs2jdNkNZyiBiAOUqVWHL318Npydjlu+LbgAIQ2EJOMBde5Uc2c9g3T8HgmHpsJqwlGu9NDCElJWxLUDHrpK2m5lvoHqWTK8RsJnAE/BAr3oeDT/YMXeR8N8mxMJ96lRLuMMki7tEpu6c+fN1svcsPuya+vVZ3AXYMrJH0yjZlX6WDgBMpmBfbeHE45KYgYjRDuXLjzVF/PFJru++Hska8MQnxJuaaNMTYxlk37O+OdcxiI4qSLeArISL1rtaOl7kwAV7xae2nBeTdw+une5ZNVKzLaRotxO15BtIjeK7rcBU+Dhay7VvP8VK8ggCYnFZTapf1mBP/YYidraXh1kix3PlodZvZ/jQpPuqfJBj//Gww7Ufl6E/Bvj+lJu1TVpNdxmTRYflhbTxVzOYTXw=
