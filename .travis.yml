@@ -9,16 +9,12 @@ before_deploy:
 - git config --global user.name ${USER}
 deploy:
   provider: npm
-  email: "$EMAIL"
-  api_key:
-    secure: "$NPM_API_KEY"
+  email: $EMAIL
+  api_key: $NPM_API_KEY
   on:
-    tags: true      
-    all_branches: true
+    repo: mvallim/javascript-collections
 after_deploy:
 - git push --tags
-- cd dist
-- git init
 - git add .
 - git commit -m "Deployed new version from Travis"
 - git push --force --quiet "https://${GH_TOKEN}@${GITHUB_REFERENCE}" master > /dev/null 2>&1
