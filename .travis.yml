@@ -1,5 +1,11 @@
 language: node_js
 node_js:
-  - "6"
-  - "7"
+  - '6'
+  - '7'
+deploy:
+  provider: npm
+  api_key: $NPM_API_KEY 
 after_success: coveralls < coverage/report-lcov/lcov.info
+env:
+  global:
+    secure: VZfUWD3BA+ufNvHXzd6Ik3QTaoYFdKI/zWwL0g6RZM4NPteYyDIsxZQbCnMOn4Vb4IcNYU8SdTRLxf9Q142jNj2KWg/JNH41t3BpGxNlrKUgyF7od111+oxJJ4RnPP0jDs2aI5NEIS2Qh6UgqSwy7hwKOz296Rv4XGm/KZE2r/V8RIptdVyTHnkpo7fhCp1c7HzMBvg1/f5HJKev3YoaBuHL3Y5HccrNXhaIzJEyRMf+apT3xPAINh0zFMEhYhLeowBluGixneA1Jw/O6TOoGrOYS3TfTpU+vnKYnKUgtOtuwSBMpJeec/0mNhr2cTwm/ZCZTm/Hvd6jc0rgNkhJURCugNU7H1Ms4qOnNS7/W1WvBRu1swY1QjYyESxZO9A2QYxG1snfCpTWTjR18wQf6OxLNliYamnsOCmkcy0Z29vw9VmCF6WzO66eXfYQso6Q9D5K87veX2d+xVqPUidAQ4bUQvXWYVAjtZmofS8FSCEIFfljXC0024dIv/+I4uiMu+7+Pb9zDwyVJBs1feimWCUTCIfTZ9L+wDMSn3HDbrrmTK62PhnFCSitemFarbgEftR/0ljrk5WXSF4BA+RS84jPIVwlN3dCQPNcq1FbMp21VORbQFfDpKda7Kxo0vAjV0MPVm2nXUzvhW4m0XkkUewHXo1HIx9wDTtN6raolSE=
