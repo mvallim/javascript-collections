@@ -7,7 +7,6 @@ before_deploy:
 - git config --global user.email ${EMAIL}
 - git config --global user.name ${USER}
 - git config --global push.default matching
-- npm version patch
 deploy:
   provider: npm
   email: $EMAIL
