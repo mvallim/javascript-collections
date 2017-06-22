@@ -10,8 +10,7 @@
     "test": "npm run karma -- --single-run",
     "start": "npm run karma",
     "compile": "./node_modules/.bin/gulp",
-    "build": "npm test && npm run compile",
-    "publish": "npm publish"
+    "build": "npm test && npm run compile"
   },
   "author": "Marcos Tischer Vallim <tischer@gmail.com>",
   "contributors": [
