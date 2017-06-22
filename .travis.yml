@@ -10,8 +10,8 @@ before_deploy:
 - npm version patch
 deploy:
   provider: npm
-  email: "$EMAIL"
-  api_key: "$NPM_API_KEY"
+  email: $EMAIL
+  api_key: $NPM_API_KEY
   skip_cleanup: true
   on:
     repo: mvallim/javascript-collections
