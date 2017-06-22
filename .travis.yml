@@ -16,7 +16,6 @@ deploy:
   on:
     repo: mvallim/javascript-collections
     node: '6'
-    tags: true
 after_deploy:
 - git push --tags "https://${GITHUB_TOKEN}@${GITHUB_REFERENCE}"
 - git push "https://${GITHUB_TOKEN}@${GITHUB_REFERENCE}"
