@@ -3,7 +3,7 @@ node_js:
 - "6"
 jobs:
   include:
-  - stage: npm release
+  - stage: npm deploy
     node_js: '6'
     script: echo "Deploying to npm ..."
     deploy:
@@ -11,7 +11,8 @@ jobs:
       email: tischer@gmail.com
       api_key:
         secure: $NPM_API_KEY
-      on: deploy-npm-release
+      on:
+        all_branches: true
 after_success: coveralls < coverage/report-lcov/lcov.info
 env:
   global:
