@@ -41,20 +41,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
 
   hashCode : {
     value : function (value) {
-      const types = {
-        OBJECT : "object",
-        BOOLEAN : "boolean",
-        NUMBER : "number",
-        STRING : "string"
-      }
-
       const prime = 1000000007;
       var hash = 1;
       var calculate = 0;
 
       switch (typeof (value))
         {
-        case types.OBJECT:
+        case ValueType.OBJECT:
           if (value == null) {
             calculate = 0;
           } else {
@@ -63,13 +56,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
             }
           }
           break;
-        case types.BOOLEAN:
+        case ValueType.BOOLEAN:
           calculate = this.hashCode(JSON.stringify(value));
           break;
-        case types.NUMBER:
+        case ValueType.NUMBER:
           calculate = this.hashCode(JSON.stringify(value));
           break;
-        case types.STRING:
+        case ValueType.STRING:
           for (var i = 0; i < value.length; i++) {
             calculate += value.charCodeAt(i);
           }

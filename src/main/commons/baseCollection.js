@@ -1,31 +1,31 @@
-function BaseCollection (cfg) {
+function BaseCollection(cfg) {
   BaseCollection.prototype.init.call(this, cfg || {})
 }
 
 BaseCollection.prototype = Object.create(null, {
 
-  constructor: BaseCollection,
+  constructor : BaseCollection,
 
-  init: {
-    value: function (cfg) {
+  init : {
+    value : function (cfg) {
       this.apply(this, cfg);
     },
-    enumerable: false,
-    configurable: false,
-    writable: true
+    enumerable : false,
+    configurable : false,
+    writable : true
   },
 
-  apply: {
-    value: function (obj, properties) {
-      for (var property in properties) {
+  apply : {
+    value : function (obj, properties) {
+      for ( var property in properties) {
         obj[property] = properties[property];
       }
     },
-    enumerable: false,
-    configurable: false,
-    writable: false
+    enumerable : false,
+    configurable : false,
+    writable : false
   },
-  
+
   length : {
     get : function () {
       throw "NotImplementedException";
@@ -35,7 +35,7 @@ BaseCollection.prototype = Object.create(null, {
 
   empty : {
     get : function () {
-      throw "NotImplementedException";      
+      throw "NotImplementedException";
     },
     configurable : false
   },
