@@ -40,7 +40,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
   
-  hashCode : {
+  _hashCode : {
     value : undefined,
     enumerable : false,
     configurable : false,
