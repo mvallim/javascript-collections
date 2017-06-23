@@ -1,6 +1,6 @@
 {
   "name": "javascript-collections",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "JavaScript Collections",
   "browser": "dist/javascript-collections.min.js",
   "main": "dist/javascript-collections.min.js",
