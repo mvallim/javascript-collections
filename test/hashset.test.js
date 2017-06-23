@@ -4,6 +4,254 @@ describe('A test suite HashSet', function () {
   afterEach(function () {
   })
 
+  it('should be union set success', function () {
+    var hashSet01 = new HashSet();
+    
+    hashSet01.add(1);
+    hashSet01.add(2);
+    hashSet01.add(3);
+    
+    var hashSet02 = new HashSet();
+    
+    hashSet02.add(4);
+    hashSet02.add(5);
+    hashSet02.add(6);    
+
+    var hashSet = hashSet01.union(hashSet02);
+
+    assert.equal(6, hashSet.length);
+    
+    hashSet.forEach(function(index, value){
+      assert.equal(true, hashSet01.contains(value) || hashSet02.contains(value));
+    });
+  });
+  
+  it('should be union same value set success', function () {
+    var hashSet01 = new HashSet();
+    
+    hashSet01.add(1);
+    hashSet01.add(2);
+    hashSet01.add(3);
+    
+    var hashSet02 = new HashSet();
+    
+    hashSet02.add(3);
+    hashSet02.add(4);
+    hashSet02.add(5);    
+
+    var hashSet = hashSet01.union(hashSet02);
+    
+    assert.equal(5, hashSet.length);
+    
+    hashSet01.forEach(function(index, value){
+      assert.equal(true, hashSet.contains(value));
+    });
+    
+    hashSet02.forEach(function(index, value){
+      assert.equal(true, hashSet.contains(value));
+    });
+  });
+  
+  it('should be union incompatible object set success', function () {
+    var hashSet01 = new HashSet();
+    
+    hashSet01.add(1);
+    hashSet01.add(2);
+    hashSet01.add(3);
+    
+    var hashSet02 = new Array();
+    
+    hashSet02.push(3);
+    hashSet02.push(4);
+    hashSet02.push(5);    
+
+    expect(function() {
+      hashSet01.union(hashSet02);
+    }).throw();
+  });
+  
+  it('should be intersect set success', function () {
+    var hashSet01 = new HashSet();
+    
+    hashSet01.add(1);
+    hashSet01.add(2);
+    hashSet01.add(3);
+    
+    var hashSet02 = new HashSet();
+    
+    hashSet02.add(1);
+    hashSet02.add(5);
+    hashSet02.add(3);    
+
+    var hashSet = hashSet01.intersect(hashSet02);
+
+    assert.equal(2, hashSet.length);
+    
+    hashSet.forEach(function(index, value){
+      assert.equal(true, hashSet01.contains(value) || hashSet02.contains(value));
+    });
+  });
+  
+  it('should be intersect diferent values set success', function () {
+    var hashSet01 = new HashSet();
+    
+    hashSet01.add(1);
+    hashSet01.add(2);
+    hashSet01.add(3);
+    
+    var hashSet02 = new HashSet();
+    
+    hashSet02.add(4);
+    hashSet02.add(5);
+    hashSet02.add(6);    
+
+    var hashSet = hashSet01.intersect(hashSet02);
+    
+    assert.equal(0, hashSet.length);
+    
+    hashSet01.forEach(function(index, value){
+      assert.equal(false, hashSet.contains(value));
+    });
+    
+    hashSet02.forEach(function(index, value){
+      assert.equal(false, hashSet.contains(value));
+    });
+  });
+  
+  it('should be intersect incompatible object set success', function () {
+    var hashSet01 = new HashSet();
+    
+    hashSet01.add(1);
+    hashSet01.add(2);
+    hashSet01.add(3);
+    
+    var hashSet02 = new Array();
+    
+    hashSet02.push(3);
+    hashSet02.push(4);
+    hashSet02.push(5);    
+
+    expect(function() {
+      hashSet01.intersect(hashSet02);
+    }).throw();
+  });
+  
+  it('should be except set success', function () {
+    var hashSet01 = new HashSet();
+    
+    hashSet01.add(1);
+    hashSet01.add(2);
+    hashSet01.add(3);
+    
+    var hashSet02 = new HashSet();
+    
+    hashSet02.add(1);
+    hashSet02.add(5);
+    hashSet02.add(3);    
+
+    var hashSet = hashSet01.except(hashSet02);
+
+    assert.equal(1, hashSet.length);
+    
+    hashSet.forEach(function(index, value){
+      assert.equal(true, hashSet01.contains(value) || hashSet02.contains(value));
+    });
+  });
+  
+  it('should be except diferent values set success', function () {
+    var hashSet01 = new HashSet();
+    
+    hashSet01.add(1);
+    hashSet01.add(2);
+    hashSet01.add(3);
+    
+    var hashSet02 = new HashSet();
+    
+    hashSet02.add(4);
+    hashSet02.add(5);
+    hashSet02.add(6);    
+
+    var hashSet = hashSet01.except(hashSet02);
+    
+    assert.equal(3, hashSet.length);
+    
+    hashSet01.forEach(function(index, value){
+      assert.equal(true, hashSet.contains(value));
+    });
+    
+    hashSet02.forEach(function(index, value){
+      assert.equal(false, hashSet.contains(value));
+    });
+  });
+  
+  it('should be except incompatible object set success', function () {
+    var hashSet01 = new HashSet();
+    
+    hashSet01.add(1);
+    hashSet01.add(2);
+    hashSet01.add(3);
+    
+    var hashSet02 = new Array();
+    
+    hashSet02.push(3);
+    hashSet02.push(4);
+    hashSet02.push(5);    
+
+    expect(function() {
+      hashSet01.except(hashSet02);
+    }).throw();
+  });
+  
+  it('should be use custom hash code function success', function () {
+    var count = 0;
+    
+    var hashSet = new HashSet(function(value){
+      return count++;
+    });
+
+    assert.equal(true, hashSet.add({
+      p0 : null,
+      p1 : "p1",
+      p2 : 1,
+      p3 : true,
+      p4 : {
+        pp1 : "pp1"
+      }
+    }));
+    assert.equal(true, hashSet.add(null));
+    assert.equal(true, hashSet.add("string"));
+    assert.equal(true, hashSet.add(100));
+    assert.equal(true, hashSet.add(100.12));
+    assert.equal(true, hashSet.add(true));
+    assert.equal(true, hashSet.add(false));
+
+    assert.equal(7, hashSet.length);
+  });
+  
+  it('should be use custom null hash code function success', function () {
+    var count = 0;
+    
+    var hashSet = new HashSet(null);
+
+    assert.equal(true, hashSet.add({
+      p0 : null,
+      p1 : "p1",
+      p2 : 1,
+      p3 : true,
+      p4 : {
+        pp1 : "pp1"
+      }
+    }));
+    assert.equal(true, hashSet.add(null));
+    assert.equal(true, hashSet.add("string"));
+    assert.equal(true, hashSet.add(100));
+    assert.equal(true, hashSet.add(100.12));
+    assert.equal(true, hashSet.add(true));
+    assert.equal(true, hashSet.add(false));
+
+    assert.equal(7, hashSet.length);
+  });  
+  
   it('should be add values success', function () {
     var hashSet = new HashSet();
 

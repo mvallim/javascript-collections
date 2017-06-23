@@ -1,9 +1,10 @@
-function HashSet(compare) {
+function HashSet(hashCode) {
   BaseCollection.call(this, {
     _dataStore : {},
     _size : 0,
     _keys : [],
-    _values : []
+    _values : [],
+    _hashCode : hashCode
   })
 }
 
@@ -38,8 +39,15 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     configurable : false,
     writable : true
   },
-
+  
   hashCode : {
+    value : undefined,
+    enumerable : false,
+    configurable : false,
+    writable : true
+  },
+
+  _defaultHashCode : {
     value : function (value) {
       const prime = 1000000007;
       var hash = 1;
@@ -68,14 +76,24 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
           }
           break;
         }
-      
+
       return (hash * prime) + (calculate ^ (calculate >>> 52));
     },
     enumerable : false,
     configurable : false,
     writable : false
   },
-  
+
+  hashCode : {
+    value : function (value) {
+      var hashCodeFunction = this._hashCode || this._defaultHashCode; 
+      return hashCodeFunction.call(this, value);
+    },
+    enumerable : false,
+    configurable : false,
+    writable : false
+  },
+
   iterator : {
     value : function () {
       return new HashSetIterator(this);
@@ -88,11 +106,11 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   forEach : {
     value : function (callback) {
       var iterator = this.iterator();
-     
+
       while (iterator.hasNext()) {
         var index = iterator.nextIndex();
         var node = iterator.next();
-        if (typeof callback === 'function')
+        if (typeof(callback) === ValueType.FUNCTION)
           callback(index, node, this);
       }
     },
@@ -127,7 +145,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
       this._keys.forEach(function (key, index) {
         entries[key] = sope._dataStore[key];
       });
-      
+
       return entries;
     },
     enumerable : false,
@@ -161,7 +179,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
 
       if (this.containsKey(key)) {
         var index = this._keys.indexOf(key);
-        
+
         this._keys.splice(index, 1);
         this._values.splice(index, 1);
         delete this._dataStore[key];
@@ -198,7 +216,26 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
 
   union : {
     value : function (hashset) {
-      throw "NotImplementedException";
+      if (hashset instanceof HashSet) {
+        var union = new HashSet();
+
+        var entriesA = this.entries();
+        var entriesB = hashset.entries();
+
+        this.keys().forEach(function (key, index) {
+          union.add(entriesA[key]);
+        });
+
+        hashset.keys().forEach(function (key, index) {
+          if (!union.containsKey(key)) {
+            union.add(entriesB[key]);
+          }
+        });
+
+        return union;
+      }
+
+      throw "IncompatibleObjectException";
     },
     enumerable : false,
     configurable : false,
@@ -207,7 +244,20 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
 
   intersect : {
     value : function (hashset) {
-      throw "NotImplementedException";
+      if (hashset instanceof HashSet) {
+        var scope = this;
+        var intersect = new HashSet();
+
+        scope.keys().forEach(function (key, index) {
+          if (hashset.containsKey(key)) {
+            intersect.add(scope._dataStore[key]);
+          }
+        });
+
+        return intersect;
+      }
+
+      throw "IncompatibleObjectException";
     },
     enumerable : false,
     configurable : false,
@@ -216,16 +266,20 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
 
   except : {
     value : function (hashset) {
-      throw "NotImplementedException";
-    },
-    enumerable : false,
-    configurable : false,
-    writable : false
-  },
+      if (hashset instanceof HashSet) {
+        var scope = this;
+        var except = new HashSet();
 
-  compare : {
-    value : function (a, b) {
-      throw "NotImplementedException";
+        scope.keys().forEach(function (key, index) {
+          if (!hashset.containsKey(key)) {
+            except.add(scope._dataStore[key]);
+          }
+        });
+
+        return except;
+      }
+
+      throw "IncompatibleObjectException";
     },
     enumerable : false,
     configurable : false,

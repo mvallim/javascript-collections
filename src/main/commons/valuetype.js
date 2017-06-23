@@ -2,5 +2,6 @@ const ValueType = {
   OBJECT : "object",
   BOOLEAN : "boolean",
   NUMBER : "number",
-  STRING : "string"
+  STRING : "string",
+  FUNCTION : "function"
 };

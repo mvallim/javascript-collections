@@ -38,7 +38,7 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
       while (iterator.hasNext()) {
         var index = iterator.nextIndex();
         var node = iterator.next();
-        if (typeof callback === 'function')
+        if (typeof(callback) === ValueType.FUNCTION)
           callback(index, node, this);
       }
     },
