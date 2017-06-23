@@ -226,6 +226,12 @@ describe('A test suite HashSet', function () {
     assert.equal(true, hashSet.add(false));
 
     assert.equal(7, hashSet.length);
+
+    var keys = [0, 1, 2, 3, 4, 5, 6];
+    
+    keys.forEach(function(key, index){
+      assert.equal(true, hashSet.containsKey(key));
+    });
   });
   
   it('should be use custom null hash code function success', function () {
