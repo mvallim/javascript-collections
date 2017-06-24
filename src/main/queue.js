@@ -1,66 +1,66 @@
-function Queue () {
+function Queue() {
   BaseCollection.call(this, {
-    _dataStore: []
+    _dataStore : []
   })
 }
 
 Queue.prototype = Object.create(BaseCollection.prototype, {
 
-  constructor: Queue,
+  constructor : Queue,
 
-  _dataStore: {
-    value: undefined,
-    enumerable: true,
-    configurable: false,
-    writable: true
+  _dataStore : {
+    value : undefined,
+    enumerable : true,
+    configurable : false,
+    writable : true
   },
 
-  enqueue: {
-    value: function (element) {
+  enqueue : {
+    value : function (element) {
       this._dataStore.push(element)
     },
-    configurable: false
+    configurable : false
   },
 
-  dequeue: {
-    value: function () {
+  dequeue : {
+    value : function () {
       return this._dataStore.shift()
     },
-    configurable: false
+    configurable : false
   },
 
-  front: {
-    value: function () {
+  front : {
+    value : function () {
       return this._dataStore[0]
     },
-    configurable: false
+    configurable : false
   },
 
-  back: {
-    value: function () {
+  back : {
+    value : function () {
       return this._dataStore[this._dataStore.length - 1]
     },
-    configurable: false
+    configurable : false
   },
 
-  length: {
-    get: function () {
+  length : {
+    get : function () {
       return this._dataStore.length
     },
-    configurable: false
+    configurable : false
   },
 
-  empty: {
-    get: function () {
+  empty : {
+    get : function () {
       return this._dataStore.length == 0
     },
-    configurable: false
+    configurable : false
   },
 
-  clear: {
-    value: function () {
+  clear : {
+    value : function () {
       this._dataStore = []
     },
-    configurable: false
+    configurable : false
   }
 })

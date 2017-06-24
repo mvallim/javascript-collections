@@ -58,5 +58,4 @@ LinkedListNode.prototype = Object.create(BaseCollection.prototype, {
     },
     configurable : false
   }
-})
-;
+});

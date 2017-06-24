@@ -1,41 +1,41 @@
-function Heap (compare) {
+function Heap(compare) {
   BaseCollection.call(this, {
-    _dataStore: [],
-    _compare: compare
+    _dataStore : [],
+    _compare : compare
   })
 }
 
 Heap.prototype = Object.create(BaseCollection.prototype, {
 
-  constructor: Heap,
+  constructor : Heap,
 
-  _dataStore: {
-    value: undefined,
-    enumerable: true,
-    configurable: false,
-    writable: true
+  _dataStore : {
+    value : undefined,
+    enumerable : true,
+    configurable : false,
+    writable : true
   },
 
-  _compare: {
-    value: undefined,
-    enumerable: false,
-    configurable: true,
-    writable: true
+  _compare : {
+    value : undefined,
+    enumerable : false,
+    configurable : true,
+    writable : true
   },
 
-  _swap: {
-    value: function (nodeA, nodeB) {
+  _swap : {
+    value : function (nodeA, nodeB) {
       var temp = nodeA.value
       nodeA.value = nodeB.value
       nodeB.value = temp
     },
-    enumerable: false,
-    configurable: false,
-    writable: false
+    enumerable : false,
+    configurable : false,
+    writable : false
   },
 
-  _heapifyUp: {
-    value: function (index) {
+  _heapifyUp : {
+    value : function (index) {
       var node = this._dataStore[index]
 
       if (node.hasParent && this._compare(node.parent.value, node.value) > 0) {
@@ -43,13 +43,13 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
         this._heapifyUp(node.parent.index)
       }
     },
-    enumerable: false,
-    configurable: false,
-    writable: false
+    enumerable : false,
+    configurable : false,
+    writable : false
   },
 
-  _heapifyDown: {
-    value: function (index) {
+  _heapifyDown : {
+    value : function (index) {
       var node = this._dataStore[index]
 
       var candidate = node
@@ -64,32 +64,33 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
 
       if (node == candidate) {
         return
+
       }
 
       this._swap(node, candidate)
 
       this._heapifyDown(candidate.index)
     },
-    enumerable: false,
-    configurable: false,
-    writable: false
+    enumerable : false,
+    configurable : false,
+    writable : false
   },
 
-  peek: {
-    value: function () {
+  peek : {
+    value : function () {
       if (this._dataStore.length == 0) {
         return null
       }
 
       return this._dataStore[0].value
     },
-    enumerable: false,
-    configurable: false,
-    writable: false
+    enumerable : false,
+    configurable : false,
+    writable : false
   },
 
-  poll: {
-    value: function () {
+  poll : {
+    value : function () {
       var value = this._dataStore[0].Value
 
       this._swap(this._dataStore[0], this._dataStore[this._dataStore.length - 1])
@@ -102,42 +103,42 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
 
       return value
     },
-    enumerable: false,
-    configurable: false,
-    writable: false
+    enumerable : false,
+    configurable : false,
+    writable : false
   },
 
-  add: {
-    value: function (value) {
+  add : {
+    value : function (value) {
       var index = this._dataStore.length
 
       this._dataStore.push(new HeapNode(this._dataStore, value, index))
 
       this._heapifyUp(index)
     },
-    enumerable: false,
-    configurable: false,
-    writable: false
+    enumerable : false,
+    configurable : false,
+    writable : false
   },
 
-  length: {
-    get: function () {
+  length : {
+    get : function () {
       return this._dataStore.length
     },
-    configurable: false
+    configurable : false
   },
 
-  empty: {
-    get: function () {
+  empty : {
+    get : function () {
       return this._dataStore.length == 0
     },
-    configurable: false
+    configurable : false
   },
 
-  clear: {
-    value: function () {
+  clear : {
+    value : function () {
       this._dataStore = []
     },
-    configurable: false
+    configurable : false
   }
 })

@@ -1,59 +1,59 @@
-function Stack () {
+function Stack() {
   BaseCollection.call(this, {
-    _dataStore: []
+    _dataStore : []
   })
 }
 
 Stack.prototype = Object.create(BaseCollection.prototype, {
 
-  constructor: Stack,
+  constructor : Stack,
 
-  _dataStore: {
-    value: undefined,
-    enumerable: true,
-    configurable: false,
-    writable: true
+  _dataStore : {
+    value : undefined,
+    enumerable : true,
+    configurable : false,
+    writable : true
   },
 
-  push: {
-    value: function (element) {
+  push : {
+    value : function (element) {
       this._dataStore.push(element)
     },
-    configurable: false
+    configurable : false
   },
 
-  pop: {
-    value: function () {
+  pop : {
+    value : function () {
       return this._dataStore.pop()
     },
-    configurable: false
+    configurable : false
   },
 
-  peek: {
-    value: function () {
+  peek : {
+    value : function () {
       return this._dataStore[this._dataStore.length - 1]
     },
-    configurable: false
+    configurable : false
   },
 
-  length: {
-    get: function () {
+  length : {
+    get : function () {
       return this._dataStore.length
     },
-    configurable: false
+    configurable : false
   },
 
-  empty: {
-    get: function () {
+  empty : {
+    get : function () {
       return this._dataStore.length == 0
     },
-    configurable: false
+    configurable : false
   },
 
-  clear: {
-    value: function () {
+  clear : {
+    value : function () {
       this._dataStore = []
     },
-    configurable: false
+    configurable : false
   }
 })

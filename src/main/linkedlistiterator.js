@@ -45,7 +45,7 @@ LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
       var current = this._curr;
 
       this._curr = this._curr.next;
-      
+
       this._index++;
 
       return current;

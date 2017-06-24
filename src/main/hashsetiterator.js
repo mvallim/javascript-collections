@@ -24,21 +24,21 @@ HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
     configurable : false,
     writable : true
   },
-  
+
   _entries : {
     value : undefined,
     enumerable : false,
     configurable : false,
     writable : true
   },
-  
+
   _index : {
     value : undefined,
     enumerable : false,
     configurable : false,
     writable : true
   },
-  
+
   hasNext : {
     value : function () {
       return !(this._index == this._keys.length);

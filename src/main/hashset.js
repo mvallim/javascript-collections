@@ -39,7 +39,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     configurable : false,
     writable : true
   },
-  
+
   _hashCode : {
     value : undefined,
     enumerable : false,
@@ -53,8 +53,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
       var hash = 1;
       var calculate = 0;
 
-      switch (typeof (value))
-        {
+      switch (typeof (value)) {
         case ValueType.OBJECT:
           if (value == null) {
             calculate = 0;
@@ -75,9 +74,9 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
             calculate += value.charCodeAt(i);
           }
           break;
-        }
+      }
 
-      return (hash * prime) + (calculate ^ (calculate >>> 52));
+      return (hash * prime) + (calculate ^ (calculate >>> 26));
     },
     enumerable : false,
     configurable : false,
@@ -86,7 +85,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
 
   hashCode : {
     value : function (value) {
-      var hashCodeFunction = this._hashCode || this._defaultHashCode; 
+      var hashCodeFunction = this._hashCode || this._defaultHashCode;
       return hashCodeFunction.call(this, value);
     },
     enumerable : false,
@@ -110,7 +109,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
       while (iterator.hasNext()) {
         var index = iterator.nextIndex();
         var node = iterator.next();
-        if (typeof(callback) === ValueType.FUNCTION)
+        if (typeof (callback) === ValueType.FUNCTION)
           callback(index, node, this);
       }
     },
