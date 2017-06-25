@@ -1,4 +1,4 @@
-function LinkedListNode(value) {
+var LinkedListNode = function LinkedListNode(value) {
   BaseCollection.call(this, {
     _value : value
   });

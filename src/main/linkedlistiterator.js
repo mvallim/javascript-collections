@@ -1,4 +1,4 @@
-function LinkedListIterator(linkedList) {
+var LinkedListIterator = function LinkedListIterator(linkedList) {
   BaseCollection.call(this, {
     _list : linkedList,
     _index : 0,

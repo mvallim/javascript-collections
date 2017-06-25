@@ -1,4 +1,4 @@
-function Stack() {
+var Stack = function Stack() {
   BaseCollection.call(this, {
     _dataStore : []
   })

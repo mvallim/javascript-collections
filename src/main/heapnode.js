@@ -1,4 +1,4 @@
-function HeapNode(items, value, index) {
+var HeapNode = function HeapNode(items, value, index) {
   BaseCollection.call(this, {
     _value : value,
     _index : index,

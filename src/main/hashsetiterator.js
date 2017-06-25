@@ -1,4 +1,4 @@
-function HashSetIterator(hashset) {
+var HashSetIterator = function HashSetIterator(hashset) {
   BaseCollection.call(this, {
     _hashset : hashset,
     _keys : hashset.keys(),

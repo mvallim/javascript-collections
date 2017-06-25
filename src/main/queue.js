@@ -1,4 +1,4 @@
-function Queue() {
+var Queue = function Queue() {
   BaseCollection.call(this, {
     _dataStore : []
   })

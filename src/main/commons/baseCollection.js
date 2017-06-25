@@ -6,8 +6,8 @@
  *            
  * @abstract
  * @constructor
- * @param {cfg}
- *          cfg A hash of cfg you want to set
+ * @param {object}
+ *          cfg A configuration of you want to set
  */
 var BaseCollection = function BaseCollection(cfg) {
   BaseCollection.prototype.init.call(this, cfg || {})
@@ -20,8 +20,8 @@ BaseCollection.prototype = Object.create(null, {
   /**
    * @method
    * @memberof BaseCollection.prototype
-   * @param {cfg}
-   *          cfg A cfg of options you want to set
+   * @param {object}
+   *          cfg A configuration of you want to set
    */
   init : {
     value : function (cfg) {
@@ -35,8 +35,8 @@ BaseCollection.prototype = Object.create(null, {
   /**
    * @method
    * @memberof BaseCollection.prototype
-   * @param {properties}
-   *          properties A properties of options you want to set
+   * @param {object}
+   *          properties A configuration of you want to set
    */
   apply : {
     value : function (properties) {
@@ -81,6 +81,7 @@ BaseCollection.prototype = Object.create(null, {
   /**
    * Clear collection, remove all element(s)
    * 
+   * @method
    * @abstract
    * @memberof BaseCollection.prototype
    */

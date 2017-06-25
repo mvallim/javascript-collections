@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>commons/valuetype.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,25 +27,36 @@
 
 <div id="main">
     
+    <h1 class="page-title">commons/valuetype.js</h1>
+    
 
     
 
 
 
     
-
-
-
-
-
-
-
-
-
-    
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Enum for typeof values.
+ * 
+ * @readonly
+ * @enum {string}
+ */
+const ValueType = {
+  /** Object value */
+  OBJECT : "object",
+  /** Boolean value */
+  BOOLEAN : "boolean",
+  /** Number value */
+  NUMBER : "number",
+  /** String value */
+  STRING : "string",
+  /** Function value */
+  FUNCTION : "function"
+};</code></pre>
+        </article>
+    </section>
 
 
 

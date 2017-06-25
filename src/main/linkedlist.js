@@ -1,4 +1,4 @@
-function LinkedList() {
+var LinkedList = function LinkedList() {
   BaseCollection.call(this, {
     _size : 0
   });
