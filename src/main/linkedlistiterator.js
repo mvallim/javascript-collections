@@ -1,15 +1,25 @@
+/**
+ * @classdesc LinkedListIterator
+ * @constructor
+ * @augments BaseIterator
+ * @param {LinkedList}
+ *          linkedList
+ */
 var LinkedListIterator = function LinkedListIterator(linkedList) {
-  BaseCollection.call(this, {
+  BaseIterator.call(this, {
     _list : linkedList,
     _index : 0,
     _curr : linkedList.first()
   });
 }
 
-LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
+LinkedListIterator.prototype = Object.create(BaseIterator.prototype, {
 
   constructor : LinkedListIterator,
 
+  /**
+   * @private
+   */
   _list : {
     value : undefined,
     enumerable : false,
@@ -17,6 +27,9 @@ LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _index : {
     value : undefined,
     enumerable : false,
@@ -24,6 +37,9 @@ LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _curr : {
     value : undefined,
     enumerable : false,
@@ -31,6 +47,13 @@ LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * 
+   * @method
+   * @inheritdoc
+   * @memberof LinkedListIterator.prototype
+   * @return {bool}
+   */
   hasNext : {
     value : function () {
       return !(this._index == this._list.length) && (this._curr != undefined);
@@ -40,6 +63,13 @@ LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @inheritdoc
+   * @memberof LinkedListIterator.prototype
+   * @return {LinkedListNode}
+   */
   next : {
     value : function () {
       var current = this._curr;
@@ -55,6 +85,13 @@ LinkedListIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @inheritdoc
+   * @memberof LinkedListIterator.prototype
+   * @return {Number}
+   */
   nextIndex : {
     value : function () {
       return this._index;

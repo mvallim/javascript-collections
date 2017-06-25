@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>linkedlistiterator.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,25 +27,122 @@
 
 <div id="main">
     
+    <h1 class="page-title">linkedlistiterator.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @classdesc LinkedListIterator
+ * @constructor
+ * @augments BaseIterator
+ * @param {LinkedList}
+ *          linkedList
+ */
+var LinkedListIterator = function LinkedListIterator(linkedList) {
+  BaseIterator.call(this, {
+    _list : linkedList,
+    _index : 0,
+    _curr : linkedList.first()
+  });
+}
 
+LinkedListIterator.prototype = Object.create(BaseIterator.prototype, {
 
+  constructor : LinkedListIterator,
 
+  /**
+   * @private
+   */
+  _list : {
+    value : undefined,
+    enumerable : false,
+    configurable : false,
+    writable : true
+  },
 
+  /**
+   * @private
+   */
+  _index : {
+    value : undefined,
+    enumerable : false,
+    configurable : false,
+    writable : true
+  },
 
+  /**
+   * @private
+   */
+  _curr : {
+    value : undefined,
+    enumerable : false,
+    configurable : false,
+    writable : true
+  },
 
+  /**
+   * 
+   * @method
+   * @inheritdoc
+   * @memberof LinkedListIterator.prototype
+   * @return {bool}
+   */
+  hasNext : {
+    value : function () {
+      return !(this._index == this._list.length) &amp;&amp; (this._curr != undefined);
+    },
+    enumerable : false,
+    configurable : false,
+    writable : false
+  },
 
+  /**
+   * 
+   * @method
+   * @inheritdoc
+   * @memberof LinkedListIterator.prototype
+   * @return {LinkedListNode}
+   */
+  next : {
+    value : function () {
+      var current = this._curr;
 
+      this._curr = this._curr.next;
 
-    
+      this._index++;
 
+      return current;
+    },
+    enumerable : false,
+    configurable : false,
+    writable : false
+  },
 
-
+  /**
+   * 
+   * @method
+   * @inheritdoc
+   * @memberof LinkedListIterator.prototype
+   * @return {Number}
+   */
+  nextIndex : {
+    value : function () {
+      return this._index;
+    },
+    enumerable : false,
+    configurable : false,
+    writable : false
+  }
+});
+</code></pre>
+        </article>
+    </section>
 
 
 

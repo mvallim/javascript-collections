@@ -1,7 +1,6 @@
 /**
  * @classdesc Heap
  * 
- * @class
  * @requires HeapNode
  * @constructor
  * @augments BaseCollection
@@ -19,6 +18,9 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
 
   constructor : Heap,
 
+  /**
+   * @private
+   */
   _dataStore : {
     value : undefined,
     enumerable : true,
@@ -26,6 +28,9 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _compare : {
     value : undefined,
     enumerable : false,
@@ -33,6 +38,9 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _swap : {
     value : function (nodeA, nodeB) {
       var temp = nodeA.value
@@ -44,6 +52,9 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * @private
+   */
   _heapifyUp : {
     value : function (index) {
       var node = this._dataStore[index]
@@ -58,6 +69,9 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * @private
+   */
   _heapifyDown : {
     value : function (index) {
       var node = this._dataStore[index]
@@ -74,6 +88,8 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
 
       if (node == candidate) {
         return
+
+        
 
       }
 

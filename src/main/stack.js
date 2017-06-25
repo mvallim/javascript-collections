@@ -1,3 +1,9 @@
+/**
+ * @classdesc Stack
+ * 
+ * @constructor
+ * @augments BaseCollection
+ */
 var Stack = function Stack() {
   BaseCollection.call(this, {
     _dataStore : []
@@ -8,6 +14,9 @@ Stack.prototype = Object.create(BaseCollection.prototype, {
 
   constructor : Stack,
 
+  /**
+   * @private
+   */
   _dataStore : {
     value : undefined,
     enumerable : true,
@@ -15,6 +24,13 @@ Stack.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * 
+   * @method
+   * @memberof Stack.prototype
+   * @param {value}
+   *          element
+   */
   push : {
     value : function (element) {
       this._dataStore.push(element)
@@ -22,6 +38,12 @@ Stack.prototype = Object.create(BaseCollection.prototype, {
     configurable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof Stack.prototype
+   * @return {value}
+   */
   pop : {
     value : function () {
       return this._dataStore.pop()
@@ -29,6 +51,12 @@ Stack.prototype = Object.create(BaseCollection.prototype, {
     configurable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof Stack.prototype
+   * @return {value}
+   */
   peek : {
     value : function () {
       return this._dataStore[this._dataStore.length - 1]
@@ -36,6 +64,10 @@ Stack.prototype = Object.create(BaseCollection.prototype, {
     configurable : false
   },
 
+  /**
+   * @inheritdoc
+   * @memberof Stack.prototype
+   */
   length : {
     get : function () {
       return this._dataStore.length
@@ -43,6 +75,10 @@ Stack.prototype = Object.create(BaseCollection.prototype, {
     configurable : false
   },
 
+  /**
+   * @inheritdoc
+   * @memberof Stack.prototype
+   */
   empty : {
     get : function () {
       return this._dataStore.length == 0
@@ -50,6 +86,11 @@ Stack.prototype = Object.create(BaseCollection.prototype, {
     configurable : false
   },
 
+  /**
+   * @inheritdoc
+   * @method
+   * @memberof Stack.prototype
+   */
   clear : {
     value : function () {
       this._dataStore = []

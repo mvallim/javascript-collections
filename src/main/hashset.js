@@ -1,7 +1,7 @@
 /**
  * @classdesc HashSet
- * 
  * @constructor
+ * @requires HashSetIterator
  * @augments BaseCollection
  * @param {function}
  *          hashCode A function to generate hashcode of objects in HashSet
@@ -20,6 +20,9 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
 
   constructor : HashSet,
 
+  /**
+   * @private
+   */
   _dataStore : {
     value : undefined,
     enumerable : true,
@@ -27,6 +30,9 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _size : {
     value : undefined,
     enumerable : false,
@@ -34,6 +40,9 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _keys : {
     value : undefined,
     enumerable : true,
@@ -41,6 +50,9 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _values : {
     value : undefined,
     enumerable : true,
@@ -48,6 +60,9 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _hashCode : {
     value : undefined,
     enumerable : false,
@@ -55,6 +70,9 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _defaultHashCode : {
     value : function (value) {
       const prime = 1000000007;
@@ -91,6 +109,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @param {Value} value
+   * @return {string}
+   */ 
   hashCode : {
     value : function (value) {
       var hashCodeFunction = this._hashCode || this._defaultHashCode;
@@ -126,6 +151,12 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @return {Array}
+   */ 
   keys : {
     value : function () {
       return this._keys;
@@ -135,6 +166,12 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @return {Array}
+   */ 
   values : {
     value : function () {
       return this._values;
@@ -144,6 +181,12 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @return {Object}
+   */ 
   entries : {
     value : function () {
       var sope = this;
@@ -160,6 +203,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @param {Value} value
+   * @return {bool}
+   */ 
   add : {
     value : function (value) {
       var key = this.hashCode(value);
@@ -180,6 +230,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @param {Value} value
+   * @return {bool}
+   */ 
   remove : {
     value : function (value) {
       var key = this.hashCode(value);
@@ -202,6 +259,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @param {Value} value
+   * @return {bool}
+   */ 
   contains : {
     value : function (value) {
       var key = this.hashCode(value);
@@ -212,6 +276,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @param {string} key
+   * @return {bool}
+   */ 
   containsKey : {
     value : function (key) {
       return key in this._dataStore;
@@ -221,6 +292,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @param {HashSet} hashset
+   * @return {HashSet}
+   */ 
   union : {
     value : function (hashset) {
       if (hashset instanceof HashSet) {
@@ -249,6 +327,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @param {HashSet} hashset
+   * @return {HashSet}
+   */ 
   intersect : {
     value : function (hashset) {
       if (hashset instanceof HashSet) {
@@ -271,6 +356,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @param {HashSet} hashset
+   * @return {HashSet}
+   */ 
   except : {
     value : function (hashset) {
       if (hashset instanceof HashSet) {
@@ -307,7 +399,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   /**
    * @inheritdoc
    * @memberof HashSet.prototype
-   */  
+   */
   empty : {
     get : function () {
       return this._size == 0;
@@ -319,7 +411,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @inheritdoc
    * @method
    * @memberof HashSet.prototype
-   */  
+   */
   clear : {
     value : function () {
       this._dataStore = {};

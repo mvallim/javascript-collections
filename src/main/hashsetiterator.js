@@ -1,5 +1,12 @@
+/**
+ * @classdesc HashSetIterator
+ * @constructor
+ * @augments BaseIterator
+ * @param {HashSet}
+ *          hashset
+ */
 var HashSetIterator = function HashSetIterator(hashset) {
-  BaseCollection.call(this, {
+  BaseIterator.call(this, {
     _hashset : hashset,
     _keys : hashset.keys(),
     _entries : hashset.entries(),
@@ -7,10 +14,13 @@ var HashSetIterator = function HashSetIterator(hashset) {
   });
 }
 
-HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
+HashSetIterator.prototype = Object.create(BaseIterator.prototype, {
 
   constructor : HashSetIterator,
 
+  /**
+   * @private
+   */
   _hashset : {
     value : undefined,
     enumerable : false,
@@ -18,6 +28,9 @@ HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _keys : {
     value : undefined,
     enumerable : true,
@@ -25,6 +38,9 @@ HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _entries : {
     value : undefined,
     enumerable : false,
@@ -32,6 +48,9 @@ HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _index : {
     value : undefined,
     enumerable : false,
@@ -39,6 +58,13 @@ HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * 
+   * @method
+   * @inheritdoc
+   * @memberof HashSetIterator.prototype
+   * @return {bool}
+   */
   hasNext : {
     value : function () {
       return !(this._index == this._keys.length);
@@ -48,6 +74,13 @@ HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @inheritdoc
+   * @memberof HashSetIterator.prototype
+   * @return {Value}
+   */
   next : {
     value : function () {
       var next = this._entries[this._keys[this._index]];
@@ -59,6 +92,13 @@ HashSetIterator.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @inheritdoc
+   * @memberof HashSetIterator.prototype
+   * @return {Number}
+   */
   nextIndex : {
     value : function () {
       return this._index;

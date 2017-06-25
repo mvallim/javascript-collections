@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>commons/base.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,25 +27,70 @@
 
 <div id="main">
     
+    <h1 class="page-title">commons/base.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @classdesc The base of all classes.
+ *            
+ * @abstract
+ * @constructor
+ * @param {object}
+ *          cfg A configuration of you want to set
+ */
+var BaseObject = function BaseCollection(cfg) {
+  BaseObject.prototype.init.call(this, cfg || {})
+}
 
+BaseObject.prototype = Object.create(null, {
 
+  constructor : BaseObject,
 
+  /**
+   * @method
+   * @protected
+   * @memberof BaseObject.prototype
+   * @param {object}
+   *          cfg A configuration of you want to set
+   */
+  init : {
+    value : function (cfg) {
+      this.apply(cfg);
+    },
+    enumerable : false,
+    configurable : false,
+    writable : true
+  },
 
-
-
-
-
-
-    
-
-
-
+  /**
+   * @method
+   * @protected 
+   * @memberof BaseObject.prototype
+   * @param {object}
+   *          properties A configuration of you want to set
+   */
+  apply : {
+    value : function (properties) {
+      var scope = this;
+      for ( var property in properties) {
+        scope[property] = properties[property];
+      }
+    },
+    enumerable : false,
+    configurable : false,
+    writable : false
+  }
+})
+</code></pre>
+        </article>
+    </section>
 
 
 

@@ -1,12 +1,18 @@
+/**
+ * @classdesc HeapNode
+ * 
+ * @constructor
+ * @augments BaseObject
+ */
 var HeapNode = function HeapNode(items, value, index) {
-  BaseCollection.call(this, {
+  BaseObject.call(this, {
     _value : value,
     _index : index,
     _dataStore : items
   })
 }
 
-HeapNode.prototype = Object.create(BaseCollection.prototype, {
+HeapNode.prototype = Object.create(BaseObject.prototype, {
 
   constructor : HeapNode,
 

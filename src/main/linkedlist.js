@@ -1,3 +1,11 @@
+/**
+ * @classdesc LinkedList
+ * 
+ * @requires LinkedListIterator
+ * @requires LinkedListNode
+ * @constructor
+ * @augments BaseCollection
+ */
 var LinkedList = function LinkedList() {
   BaseCollection.call(this, {
     _size : 0
@@ -8,6 +16,9 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
 
   constructor : LinkedList,
 
+  /**
+   * @private
+   */
   _head : {
     value : undefined,
     enumerable : false,
@@ -15,6 +26,9 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     writable : true
   },
 
+  /**
+   * @private
+   */
   _tail : {
     value : undefined,
     enumerable : false,
@@ -47,6 +61,12 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof LinkedList.prototype
+   * @return {LinkedListNode}
+   */ 
   first : {
     value : function () {
       return this._head;
@@ -56,6 +76,12 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof LinkedList.prototype
+   * @return {LinkedListNode}
+   */ 
   last : {
     value : function () {
       return this._tail;
@@ -65,6 +91,12 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof LinkedList.prototype
+   * @param {Value} value
+   */ 
   add : {
     value : function (value) {
       var node = new LinkedListNode(value);
@@ -85,6 +117,13 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof LinkedList.prototype
+   * @param {Number} index
+   * @param {Value} value
+   */ 
   addAt : {
     value : function (index, value) {
       var node = new LinkedListNode(value);
@@ -123,6 +162,12 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof LinkedList.prototype
+   * @param {Value} value
+   */ 
   remove : {
     value : function (value) {
       var current = this._head;
@@ -150,6 +195,12 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof LinkedList.prototype
+   * @param {Number} index
+   */  
   removeAt : {
     value : function (index) {
       if (index < 0 || index >= this._size) {
@@ -187,6 +238,13 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof LinkedList.prototype
+   * @param {Number} index
+   * @return {LinkedListNode}
+   */  
   get : {
     value : function (index) {
       if (index < 0 || index >= this._size) {
@@ -213,6 +271,13 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * 
+   * @method
+   * @memberof LinkedList.prototype
+   * @param {Number} index
+   * @param {Value} value
+   */  
   set : {
     value : function (index, value) {
       if (index < 0 || index >= this._size) {
@@ -239,6 +304,10 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * @inheritdoc
+   * @memberof LinkedList.prototype
+   */
   length : {
     get : function () {
       return this._size;
@@ -246,6 +315,10 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     configurable : false
   },
 
+  /**
+   * @inheritdoc
+   * @memberof LinkedList.prototype
+   */
   empty : {
     get : function () {
       return this._size == 0;
@@ -253,6 +326,11 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
     configurable : false
   },
 
+  /**
+   * @inheritdoc
+   * @method
+   * @memberof LinkedList.prototype
+   */
   clear : {
     value : function () {
       this._head = undefined;
