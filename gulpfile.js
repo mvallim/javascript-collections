@@ -11,7 +11,7 @@ let descriptor = require('./package.json');
 let config = require('./package.json');
 
 config.path = {
-  src: './src/**/*.js',
+  src: './src/main/**/*.js',
   dist: './dist/'
 };
 
