@@ -1,5 +1,17 @@
 /**
- * @classdesc HashSet
+ * @classdesc Data structures of type "Set" are known to accept only single
+ *            values, that is, any duplicate value inserted in a "Set" will be
+ *            automatically deleted.
+ * 
+ * HashSet is the fastest of all, this uses HashTable and its elements are not
+ * ordered, the complexity of this structure is O (1), in other words, no matter
+ * how much you add, remove, remove, the execution time will always be the same.
+ * And this is extremely critical in processes where we have a critical
+ * situation with millions of data to be inserted into a Set. On the other hand,
+ * the guarantee of continuity in the order of the inserted elements is zero,
+ * ie, this type of structure is indicated if you You just need to ensure high
+ * performance regardless of the order in which the elements are ordered.
+ * 
  * @constructor
  * @requires HashSetIterator
  * @augments BaseCollection
@@ -113,9 +125,10 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * 
    * @method
    * @memberof HashSet.prototype
-   * @param {Value} value
+   * @param {Value}
+   *          value
    * @return {string}
-   */ 
+   */
   hashCode : {
     value : function (value) {
       var hashCodeFunction = this._hashCode || this._defaultHashCode;
@@ -126,6 +139,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     writable : false
   },
 
+  /**
+   * Returns an iterator over the elements in this list in proper sequence.
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @return {HashSetIterator}
+   */
   iterator : {
     value : function () {
       return new HashSetIterator(this);
@@ -156,7 +176,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @method
    * @memberof HashSet.prototype
    * @return {Array}
-   */ 
+   */
   keys : {
     value : function () {
       return this._keys;
@@ -171,7 +191,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @method
    * @memberof HashSet.prototype
    * @return {Array}
-   */ 
+   */
   values : {
     value : function () {
       return this._values;
@@ -186,7 +206,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @method
    * @memberof HashSet.prototype
    * @return {Object}
-   */ 
+   */
   entries : {
     value : function () {
       var sope = this;
@@ -204,12 +224,14 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * Appends the specified element.
    * 
    * @method
    * @memberof HashSet.prototype
-   * @param {Value} value
+   * @param {Value}
+   *          value
    * @return {bool}
-   */ 
+   */
   add : {
     value : function (value) {
       var key = this.hashCode(value);
@@ -231,12 +253,14 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * Removes the specified element from this collection.
    * 
    * @method
    * @memberof HashSet.prototype
-   * @param {Value} value
+   * @param {Value}
+   *          value
    * @return {bool}
-   */ 
+   */
   remove : {
     value : function (value) {
       var key = this.hashCode(value);
@@ -260,12 +284,14 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * Returns true if this collection contains the specified element.
    * 
    * @method
    * @memberof HashSet.prototype
-   * @param {Value} value
+   * @param {Value}
+   *          value
    * @return {bool}
-   */ 
+   */
   contains : {
     value : function (value) {
       var key = this.hashCode(value);
@@ -277,12 +303,14 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * Returns true if this collection contains the specified key.
    * 
    * @method
    * @memberof HashSet.prototype
-   * @param {string} key
+   * @param {string}
+   *          key
    * @return {bool}
-   */ 
+   */
   containsKey : {
     value : function (key) {
       return key in this._dataStore;
@@ -293,12 +321,15 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * The union returns new HashSet with from both tables HashSets without
+   * duplicate values.
    * 
    * @method
    * @memberof HashSet.prototype
-   * @param {HashSet} hashset
+   * @param {HashSet}
+   *          hashset
    * @return {HashSet}
-   */ 
+   */
   union : {
     value : function (hashset) {
       if (hashset instanceof HashSet) {
@@ -328,12 +359,15 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * The intersect returns new HashSet with from both tables HashSets with only
+   * values, present in two sets.
    * 
    * @method
    * @memberof HashSet.prototype
-   * @param {HashSet} hashset
+   * @param {HashSet}
+   *          hashset
    * @return {HashSet}
-   */ 
+   */
   intersect : {
     value : function (hashset) {
       if (hashset instanceof HashSet) {
@@ -357,12 +391,15 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * The except returns new HashSet with from both tables HashSets without
+   * values, present in second set.
    * 
    * @method
    * @memberof HashSet.prototype
-   * @param {HashSet} hashset
+   * @param {HashSet}
+   *          hashset
    * @return {HashSet}
-   */ 
+   */
   except : {
     value : function (hashset) {
       if (hashset instanceof HashSet) {

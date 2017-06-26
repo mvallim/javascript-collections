@@ -16,7 +16,7 @@ BaseCollection.prototype = Object.create(BaseObject.prototype, {
   constructor : BaseCollection,
 
   /**
-   * Return number of elements in collection
+   * Returns the number of elements in this collection.
    * 
    * @abstract
    * @memberof BaseCollection.prototype
@@ -30,7 +30,7 @@ BaseCollection.prototype = Object.create(BaseObject.prototype, {
   },
 
   /**
-   * Return if collection contains any element(s)
+   * Returns true if this collection contains no elements
    * 
    * @abstract
    * @memberof BaseCollection.prototype
@@ -44,7 +44,7 @@ BaseCollection.prototype = Object.create(BaseObject.prototype, {
   },
 
   /**
-   * Clear collection, remove all element(s)
+   * Removes all of the elements from this collection.
    * 
    * @method
    * @abstract

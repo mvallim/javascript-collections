@@ -16,6 +16,7 @@ BaseIterator.prototype = Object.create(BaseObject.prototype, {
   constructor : BaseIterator,
 
   /**
+   * Returns true if the iteration has more elements.
    * 
    * @method
    * @abstract
@@ -32,6 +33,7 @@ BaseIterator.prototype = Object.create(BaseObject.prototype, {
   },
 
   /**
+   * Returns the next element in the iteration.
    * 
    * @method
    * @abstract
@@ -48,6 +50,7 @@ BaseIterator.prototype = Object.create(BaseObject.prototype, {
   },
 
   /**
+   * Returns the index of next element in the iteration.
    * 
    * @method
    * @abstract
