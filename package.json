@@ -1,7 +1,16 @@
 {
   "name": "javascript-collections",
   "version": "0.0.19",
-  "description": "JavaScript Collections",
+  "description": "JavaScript implementation of different collections",
+  "keywords": [
+    "collection",
+    "datastruct",
+    "linkedlist",
+    "queue",
+    "stack",
+    "hashset",
+    "heap"
+  ],
   "browser": "dist/javascript-collections.min.js",
   "main": "dist/javascript-collections.min.js",
   "license": "GPL-3.0",
