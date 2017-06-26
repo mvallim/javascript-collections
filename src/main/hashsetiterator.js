@@ -1,5 +1,5 @@
 /**
- * @classdesc HashSetIterator
+ * @classdesc An iterator over a HashSet collection.
  * @constructor
  * @augments BaseIterator
  * @param {HashSet}

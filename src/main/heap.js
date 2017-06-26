@@ -1,5 +1,26 @@
 /**
- * @classdesc Heap
+ * @classdesc It is a data structure organized as a balanced binary tree,
+ *            following some rules. This can be implemented in an arrangement,
+ *            so that it is accessed as a binary tree:
+ * 
+ * Parent (i) = return i / 2
+ * 
+ * Left (i) = return i * 2
+ * 
+ * Right (i) = return (i * 2) + 1
+ * 
+ * These operations can be performed quickly using bitwise operations. For the
+ * left child moves the bits to the left, to the right moves the bits to the
+ * right and applies the operation "or" to 1. To find the parent, shifts a bit
+ * to the right. The advantage of using bitwise operations is that each uses
+ * only one processor clock and is highly efficient. There are two types of
+ * heaps: The maximum heaps (max heap), in which the value of all nodes are
+ * smaller than those of their respective parents; And heaps of min (min heap),
+ * in which the value of all nodes is greater than those of their respective
+ * parents. Thus, at a maximum heap, the highest value of the set is at the root
+ * of the tree, while at the minimum heap the root stores the smallest existing
+ * value. This can be defined by determining a sort function in the class
+ * constructor.
  * 
  * @requires HeapNode
  * @constructor
@@ -91,6 +112,34 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
 
         
 
+                
+
+        
+
+                        
+
+        
+
+                
+
+        
+
+                                
+
+        
+
+                
+
+        
+
+                        
+
+        
+
+                
+
+        
+
       }
 
       this._swap(node, candidate)
@@ -103,6 +152,7 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * Return first element on Heap, without remove.
    * 
    * @method
    * @memberof Heap.prototype
@@ -122,6 +172,7 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * Return first element on Heap, remove.
    * 
    * @method
    * @memberof Heap.prototype
@@ -147,6 +198,7 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * Appends the specified element.
    * 
    * @method
    * @memberof Heap.prototype

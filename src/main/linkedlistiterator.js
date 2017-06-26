@@ -1,5 +1,5 @@
 /**
- * @classdesc LinkedListIterator
+ * @classdesc An iterator over a LinkedList collection.
  * @constructor
  * @augments BaseIterator
  * @param {LinkedList}
