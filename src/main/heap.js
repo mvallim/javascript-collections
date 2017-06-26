@@ -108,38 +108,7 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
       }
 
       if (node == candidate) {
-        return
-
-        
-
-                
-
-        
-
-                        
-
-        
-
-                
-
-        
-
-                                
-
-        
-
-                
-
-        
-
-                        
-
-        
-
-                
-
-        
-
+        return;
       }
 
       this._swap(node, candidate)
