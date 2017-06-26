@@ -5,6 +5,12 @@
 [![Coverage Status](https://coveralls.io/repos/github/mvallim/javascript-collections/badge.svg?branch=master)](https://coveralls.io/github/mvallim/javascript-collections?branch=master)
 [![API Doc](https://doclets.io/mvallim/javascript-collections/master.svg)](https://doclets.io/mvallim/javascript-collections/master)
 
+# [Isomorphic](https://github.com/mvallim/javascript-collections/issues/4)
+| **Type** 	| **Status** 	|
+|----------	|:----------:	|
+|  Browser 	|  **Done**  	|
+|      AMD 	|     WIP    	|
+| CommonJS 	|     WIP    	|
 
 
 ## Development
