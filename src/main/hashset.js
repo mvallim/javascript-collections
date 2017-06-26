@@ -155,13 +155,13 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     configurable : false,
     writable : false
   },
-  
+
   /**
-   * The forEach() method calls a provided function once for each element in an collection.
+   * The forEach() method calls a provided function once for each element in an
+   * collection.
    * 
    * @method
    * @memberof HashSet.prototype
-   * @return {HashSetIterator}
    */
   forEach : {
     value : function (callback) {
