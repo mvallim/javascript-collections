@@ -1,4 +1,3 @@
-# javascript-collections
 # JavaScript implementation of different collections.
 
 [![npm version](https://badge.fury.io/js/javascript-collections.svg)](https://badge.fury.io/js/javascript-collections)
