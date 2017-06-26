@@ -122,6 +122,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * Return a hashcode of the value
    * 
    * @method
    * @memberof HashSet.prototype
@@ -154,7 +155,14 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     configurable : false,
     writable : false
   },
-
+  
+  /**
+   * The forEach() method calls a provided function once for each element in an collection.
+   * 
+   * @method
+   * @memberof HashSet.prototype
+   * @return {HashSetIterator}
+   */
   forEach : {
     value : function (callback) {
       var iterator = this.iterator();
@@ -172,6 +180,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * Return all keys of this HashSet
    * 
    * @method
    * @memberof HashSet.prototype
@@ -187,6 +196,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * Return all values of this HashSet
    * 
    * @method
    * @memberof HashSet.prototype
@@ -202,6 +212,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
   },
 
   /**
+   * Return a entry table (key:value) of HashSet
    * 
    * @method
    * @memberof HashSet.prototype
