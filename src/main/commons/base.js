@@ -6,7 +6,7 @@
  * @param {object}
  *          cfg A configuration of you want to set
  */
-var BaseObject = function BaseCollection(cfg) {
+var BaseObject = function BaseObject(cfg) {
   BaseObject.prototype.init.call(this, cfg || {})
 }
 
