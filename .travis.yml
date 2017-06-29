@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - '6'
 after_success:
-- coveralls < coverage/report-lcov/lcov.info
+- coveralls < coverage/lcov.info
 before_deploy:
 - git config --global user.email ${EMAIL}
 - git config --global user.name ${USER}

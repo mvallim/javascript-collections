@@ -1,76 +1,79 @@
-describe('A test suite Stack', function () {
-  beforeEach(function () {
-  })
-  afterEach(function () {
-  })
+/* global test, require, expect, describe, beforeEach afterEach */
 
-  it('should be push values and pop last element success', function () {
-    var stack = new Stack()
+describe('A test suite Stack', function() {
+  const Stack = require('../main/index').Stack;
+  beforeEach(function() {
+  });
+  afterEach(function() {
+  });
 
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
-    stack.push(4)
-    stack.push(5)
-    stack.push(6)
+  test('should be push values and pop last element success', function() {
+    const stack = new Stack();
 
-    var pop = stack.pop()
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    stack.push(4);
+    stack.push(5);
+    stack.push(6);
 
-    assert.equal(6, pop)
-  })
+    const pop = stack.pop();
 
-  it('should be push values and empty stack success', function () {
-    var stack = new Stack()
+    expect(pop).toEqual(6, pop);
+  });
 
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
-    stack.push(4)
-    stack.push(5)
-    stack.push(6)
+  test('should be push values and empty stack success', function() {
+    const stack = new Stack();
+
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    stack.push(4);
+    stack.push(5);
+    stack.push(6);
 
     while (!stack.empty) {
-      stack.pop()
+      stack.pop();
     }
 
-    assert.equal(true, stack.empty)
-  })
+    expect(stack.empty).toBe(true);
+  });
 
-  it('should be push values and peek stack success', function () {
-    var stack = new Stack()
+  test('should be push values and peek stack success', function() {
+    const stack = new Stack();
 
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
-    stack.push(4)
-    stack.push(5)
-    stack.push(6)
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    stack.push(4);
+    stack.push(5);
+    stack.push(6);
 
-    assert.equal(6, stack.peek())
-  })
+    expect(6).toEqual(stack.peek());
+  });
 
-  it('should be push values and clear stack success', function () {
-    var stack = new Stack()
+  test('should be push values and clear stack success', function() {
+    const stack = new Stack();
 
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
-    stack.push(4)
-    stack.push(5)
-    stack.push(6)
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    stack.push(4);
+    stack.push(5);
+    stack.push(6);
 
-    stack.clear()
+    stack.clear();
 
-    assert.equal(true, stack.empty)
-  })
+    expect(stack.empty).toBe(true);
+  });
 
-  it('should be push values and length stack success', function () {
-    var stack = new Stack()
+  test('should be push values and length stack success', function() {
+    const stack = new Stack();
 
-    stack.push(1)
-    stack.push(2)
-    stack.push(3)
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
 
-    assert.equal(3, stack.length)
-  })
-})
+    expect(3).toEqual(stack.length);
+  });
+});

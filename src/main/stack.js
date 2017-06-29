@@ -1,89 +1,90 @@
+var BaseCollection = require('./commons/basecollection');
 /**
  * @classdesc Stack
- * 
+ *
  * @constructor
  * @augments BaseCollection
  */
 var Stack = function Stack() {
   BaseCollection.call(this, {
-    _dataStore : []
-  })
-}
+    _dataStore: [],
+  });
+};
 
 Stack.prototype = Object.create(BaseCollection.prototype, {
 
-  constructor : Stack,
+  constructor: Stack,
 
   /**
    * @private
    */
-  _dataStore : {
-    value : undefined,
-    enumerable : true,
-    configurable : false,
-    writable : true
+  _dataStore: {
+    value: undefined,
+    enumerable: true,
+    configurable: false,
+    writable: true,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof Stack.prototype
    * @param {value}
    *          element
    */
-  push : {
-    value : function (element) {
-      this._dataStore.push(element)
+  push: {
+    value: function(element) {
+      this._dataStore.push(element);
     },
-    configurable : false
+    configurable: false,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof Stack.prototype
    * @return {value}
    */
-  pop : {
-    value : function () {
-      return this._dataStore.pop()
+  pop: {
+    value: function() {
+      return this._dataStore.pop();
     },
-    configurable : false
+    configurable: false,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof Stack.prototype
    * @return {value}
    */
-  peek : {
-    value : function () {
-      return this._dataStore[this._dataStore.length - 1]
+  peek: {
+    value: function() {
+      return this._dataStore[this._dataStore.length - 1];
     },
-    configurable : false
+    configurable: false,
   },
 
   /**
    * @inheritdoc
    * @memberof Stack.prototype
    */
-  length : {
-    get : function () {
-      return this._dataStore.length
+  length: {
+    get: function() {
+      return this._dataStore.length;
     },
-    configurable : false
+    configurable: false,
   },
 
   /**
    * @inheritdoc
    * @memberof Stack.prototype
    */
-  empty : {
-    get : function () {
-      return this._dataStore.length == 0
+  empty: {
+    get: function() {
+      return this._dataStore.length == 0;
     },
-    configurable : false
+    configurable: false,
   },
 
   /**
@@ -91,10 +92,11 @@ Stack.prototype = Object.create(BaseCollection.prototype, {
    * @method
    * @memberof Stack.prototype
    */
-  clear : {
-    value : function () {
-      this._dataStore = []
+  clear: {
+    value: function() {
+      this._dataStore = [];
     },
-    configurable : false
-  }
-})
+    configurable: false,
+  },
+});
+module.exports = Stack;

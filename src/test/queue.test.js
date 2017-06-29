@@ -1,93 +1,96 @@
-describe('A test suite Queue', function () {
-  beforeEach(function () {
-  })
-  afterEach(function () {
-  })
+/* global test, require, expect, describe, beforeEach afterEach */
 
-  it('should be enqueue values and dequeue success', function () {
-    var queue = new Queue()
+describe('A test suite Queue', function() {
+  const Queue = require('../main/index').Queue;
+  beforeEach(function() {
+  });
+  afterEach(function() {
+  });
 
-    queue.enqueue(1)
-    queue.enqueue(2)
-    queue.enqueue(3)
-    queue.enqueue(4)
-    queue.enqueue(5)
-    queue.enqueue(6)
+  test('should be enqueue values and dequeue success', function() {
+    const queue = new Queue();
 
-    var dequeue = queue.dequeue()
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(4);
+    queue.enqueue(5);
+    queue.enqueue(6);
 
-    assert.equal(1, dequeue)
-  })
+    var dequeue = queue.dequeue();
 
-  it('should be enqueue values and empty queue success', function () {
-    var queue = new Queue()
+    expect(dequeue).toEqual(1);
+  });
 
-    queue.enqueue(1)
-    queue.enqueue(2)
-    queue.enqueue(3)
-    queue.enqueue(4)
-    queue.enqueue(5)
-    queue.enqueue(6)
+  test('should be enqueue values and empty queue success', function() {
+    const queue = new Queue();
+
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(4);
+    queue.enqueue(5);
+    queue.enqueue(6);
 
     while (!queue.empty) {
-      queue.dequeue()
+      queue.dequeue();
     }
 
-    assert.equal(true, queue.empty)
-  })
+    expect(queue.empty).toBe(true);
+  });
 
-  it('should be enqueue values and get front success', function () {
-    var queue = new Queue()
+  test('should be enqueue values and get front success', function() {
+    const queue = new Queue();
 
-    queue.enqueue(1)
-    queue.enqueue(2)
-    queue.enqueue(3)
-    queue.enqueue(4)
-    queue.enqueue(5)
-    queue.enqueue(6)
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(4);
+    queue.enqueue(5);
+    queue.enqueue(6);
 
-    var front = queue.front()
+    var front = queue.front();
 
-    assert.equal(1, front)
-  })
+    expect(front).toEqual(1);
+  });
 
-  it('should be enqueue values and get back success', function () {
-    var queue = new Queue()
+  test('should be enqueue values and get back success', function() {
+    const queue = new Queue();
 
-    queue.enqueue(1)
-    queue.enqueue(2)
-    queue.enqueue(3)
-    queue.enqueue(4)
-    queue.enqueue(5)
-    queue.enqueue(6)
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(4);
+    queue.enqueue(5);
+    queue.enqueue(6);
 
-    var back = queue.back()
+    var back = queue.back();
 
-    assert.equal(6, back)
-  })
+    expect(back).toEqual(6);
+  });
 
-  it('should be push values and clear stack success', function () {
-    var queue = new Queue()
+  test('should be push values and clear stack success', function() {
+    const queue = new Queue();
 
-    queue.enqueue(1)
-    queue.enqueue(2)
-    queue.enqueue(3)
-    queue.enqueue(4)
-    queue.enqueue(5)
-    queue.enqueue(6)
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(4);
+    queue.enqueue(5);
+    queue.enqueue(6);
 
-    queue.clear()
+    queue.clear();
 
-    assert.equal(true, queue.empty)
-  })
+    expect(queue.empty).toBe(true);
+  });
 
-  it('should be push values and length stack success', function () {
-    var queue = new Queue()
+  test('should be push values and length stack success', function() {
+    const queue = new Queue();
 
-    queue.enqueue(1)
-    queue.enqueue(2)
-    queue.enqueue(3)
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
 
-    assert.equal(3, queue.length)
-  })
-})
+    expect(queue.length).toEqual(3);
+  });
+});

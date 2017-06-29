@@ -1,61 +1,65 @@
+var BaseCollection = require('./commons/basecollection');
+
 var LinkedListNode = function LinkedListNode(value) {
   BaseCollection.call(this, {
-    _value : value
+    _value: value,
   });
-}
+};
 
 LinkedListNode.prototype = Object.create(BaseCollection.prototype, {
 
-  constructor : LinkedListNode,
+  constructor: LinkedListNode,
 
-  _value : {
-    value : undefined,
-    enumerable : false,
-    configurable : false,
-    writable : true
+  _value: {
+    value: undefined,
+    enumerable: false,
+    configurable: false,
+    writable: true,
   },
 
-  _next : {
-    value : undefined,
-    enumerable : false,
-    configurable : false,
-    writable : true
+  _next: {
+    value: undefined,
+    enumerable: false,
+    configurable: false,
+    writable: true,
   },
 
-  _prev : {
-    value : undefined,
-    enumerable : false,
-    configurable : false,
-    writable : true
+  _prev: {
+    value: undefined,
+    enumerable: false,
+    configurable: false,
+    writable: true,
   },
 
-  value : {
-    get : function () {
+  value: {
+    get: function() {
       return this._value;
     },
-    set : function (value) {
+    set: function(value) {
       this._value = value;
     },
-    configurable : false
+    configurable: false,
   },
 
-  next : {
-    get : function () {
+  next: {
+    get: function() {
       return this._next;
     },
-    set : function (node) {
+    set: function(node) {
       this._next = node;
     },
-    configurable : false
+    configurable: false,
   },
 
-  prev : {
-    get : function () {
+  prev: {
+    get: function() {
       return this._prev;
     },
-    set : function (node) {
+    set: function(node) {
       this._prev = node;
     },
-    configurable : false
-  }
+    configurable: false,
+  },
 });
+
+module.exports = LinkedListNode;

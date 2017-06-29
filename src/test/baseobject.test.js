@@ -1,12 +1,14 @@
-describe('A test suite BaseCollection', function () {
-  beforeEach(function () {
-  })
-  afterEach(function () {
-  })
+/* global test, require, expect, describe, beforeEach afterEach */
 
-  it('should be throw in unimplemented methods success', function () {
-    var baseObject = new BaseObject();
-    
-    assert.equal(true, baseObject != null);
+describe('A test suite BaseCollection', function() {
+  const BaseObject = require('../main/commons/base');
+  beforeEach(function() {
   });
-})
+  afterEach(function() {
+  });
+
+  test('should be throw in unimplemented methods success', function() {
+    const baseObject = new BaseObject();
+    expect(baseObject).not.toBeNull();
+  });
+});

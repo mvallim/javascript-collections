@@ -1,6 +1,11 @@
+var BaseCollection = require('./commons/basecollection');
+var LinkedListIterator = require('./linkedlistiterator');
+var LinkedListNode = require('./linkedlistnode');
+var ValueType = require('./commons/valuetype');
+
 /**
  * @classdesc LinkedList
- * 
+ *
  * @requires LinkedListIterator
  * @requires LinkedListNode
  * @constructor
@@ -8,97 +13,98 @@
  */
 var LinkedList = function LinkedList() {
   BaseCollection.call(this, {
-    _size : 0
+    _size: 0,
   });
-}
+};
 
 LinkedList.prototype = Object.create(BaseCollection.prototype, {
 
-  constructor : LinkedList,
+  constructor: LinkedList,
 
   /**
    * @private
    */
-  _head : {
-    value : undefined,
-    enumerable : false,
-    configurable : false,
-    writable : true
+  _head: {
+    value: undefined,
+    enumerable: false,
+    configurable: false,
+    writable: true,
   },
 
   /**
    * @private
    */
-  _tail : {
-    value : undefined,
-    enumerable : false,
-    configurable : false,
-    writable : true
+  _tail: {
+    value: undefined,
+    enumerable: false,
+    configurable: false,
+    writable: true,
   },
 
-  iterator : {
-    value : function () {
+  iterator: {
+    value: function() {
       return new LinkedListIterator(this);
     },
-    enumerable : false,
-    configurable : false,
-    writable : false
+    enumerable: false,
+    configurable: false,
+    writable: false,
   },
 
-  forEach : {
-    value : function (callback) {
+  forEach: {
+    value: function(callback) {
       var iterator = this.iterator();
 
       while (iterator.hasNext()) {
         var index = iterator.nextIndex();
         var node = iterator.next();
-        if (typeof (callback) === ValueType.FUNCTION)
+        if (typeof (callback) === ValueType.FUNCTION) {
           callback(index, node, this);
+        }
       }
     },
-    enumerable : false,
-    configurable : false,
-    writable : false
+    enumerable: false,
+    configurable: false,
+    writable: false,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof LinkedList.prototype
    * @return {LinkedListNode}
-   */ 
-  first : {
-    value : function () {
+   */
+  first: {
+    value: function() {
       return this._head;
     },
-    enumerable : false,
-    configurable : false,
-    writable : false
+    enumerable: false,
+    configurable: false,
+    writable: false,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof LinkedList.prototype
    * @return {LinkedListNode}
-   */ 
-  last : {
-    value : function () {
+   */
+  last: {
+    value: function() {
       return this._tail;
     },
-    enumerable : false,
-    configurable : false,
-    writable : false
+    enumerable: false,
+    configurable: false,
+    writable: false,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof LinkedList.prototype
    * @param {Value} value
-   */ 
-  add : {
-    value : function (value) {
+   */
+  add: {
+    value: function(value) {
       var node = new LinkedListNode(value);
 
       if (this._head == undefined) {
@@ -112,24 +118,24 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
 
       this._size++;
     },
-    enumerable : false,
-    configurable : false,
-    writable : false
+    enumerable: false,
+    configurable: false,
+    writable: false,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof LinkedList.prototype
    * @param {Number} index
    * @param {Value} value
-   */ 
-  addAt : {
-    value : function (index, value) {
+   */
+  addAt: {
+    value: function(index, value) {
       var node = new LinkedListNode(value);
 
       if (index < 0 || index > this._size) {
-        throw "IndexOutOfBoundsException";
+        throw 'IndexOutOfBoundsException';
       } else if (index == 0) {
         node.next = this._head;
         this._head.prev = node;
@@ -157,19 +163,19 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
 
       this._size++;
     },
-    enumerable : false,
-    configurable : false,
-    writable : false
+    enumerable: false,
+    configurable: false,
+    writable: false,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof LinkedList.prototype
    * @param {Value} value
-   */ 
-  remove : {
-    value : function (value) {
+   */
+  remove: {
+    value: function(value) {
       var current = this._head;
 
       while (current != undefined) {
@@ -190,21 +196,21 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
         current = current.next;
       }
     },
-    enumerable : false,
-    configurable : false,
-    writable : false
+    enumerable: false,
+    configurable: false,
+    writable: false,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof LinkedList.prototype
    * @param {Number} index
-   */  
-  removeAt : {
-    value : function (index) {
+   */
+  removeAt: {
+    value: function(index) {
       if (index < 0 || index >= this._size) {
-        throw "IndexOutOfBoundsException";
+        throw 'IndexOutOfBoundsException';
       } else if (index == 0) {
         this._head = this._head.next;
 
@@ -233,22 +239,22 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
 
       this._size--;
     },
-    enumerable : false,
-    configurable : false,
-    writable : false
+    enumerable: false,
+    configurable: false,
+    writable: false,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof LinkedList.prototype
    * @param {Number} index
    * @return {LinkedListNode}
-   */  
-  get : {
-    value : function (index) {
+   */
+  get: {
+    value: function(index) {
       if (index < 0 || index >= this._size) {
-        throw "IndexOutOfBoundsException";
+        throw 'IndexOutOfBoundsException';
       } else if (index == 0) {
         return this._head;
       } else if (index == this._size - 1) {
@@ -266,22 +272,22 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
         return current;
       }
     },
-    enumerable : false,
-    configurable : false,
-    writable : false
+    enumerable: false,
+    configurable: false,
+    writable: false,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof LinkedList.prototype
    * @param {Number} index
    * @param {Value} value
-   */  
-  set : {
-    value : function (index, value) {
+   */
+  set: {
+    value: function(index, value) {
       if (index < 0 || index >= this._size) {
-        throw "IndexOutOfBoundsException";
+        throw 'IndexOutOfBoundsException';
       } else if (index == 0) {
         this._head.value = value;
       } else if (index == this._size - 1) {
@@ -299,31 +305,31 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
         current.value = value;
       }
     },
-    enumerable : false,
-    configurable : false,
-    writable : false
+    enumerable: false,
+    configurable: false,
+    writable: false,
   },
 
   /**
    * @inheritdoc
    * @memberof LinkedList.prototype
    */
-  length : {
-    get : function () {
+  length: {
+    get: function() {
       return this._size;
     },
-    configurable : false
+    configurable: false,
   },
 
   /**
    * @inheritdoc
    * @memberof LinkedList.prototype
    */
-  empty : {
-    get : function () {
+  empty: {
+    get: function() {
       return this._size == 0;
     },
-    configurable : false
+    configurable: false,
   },
 
   /**
@@ -331,12 +337,14 @@ LinkedList.prototype = Object.create(BaseCollection.prototype, {
    * @method
    * @memberof LinkedList.prototype
    */
-  clear : {
-    value : function () {
+  clear: {
+    value: function() {
       this._head = undefined;
       this._tail = undefined;
       this._size = 0;
     },
-    configurable : false
-  }
+    configurable: false,
+  },
 });
+
+module.exports = LinkedList;

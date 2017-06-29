@@ -1,18 +1,19 @@
 /**
  * Enum for typeof values.
- * 
+ *
  * @readonly
  * @enum {string}
  */
-const ValueType = {
+var ValueType = {
   /** Object value */
-  OBJECT : "object",
+  OBJECT: 'object',
   /** Boolean value */
-  BOOLEAN : "boolean",
+  BOOLEAN: 'boolean',
   /** Number value */
-  NUMBER : "number",
+  NUMBER: 'number',
   /** String value */
-  STRING : "string",
+  STRING: 'string',
   /** Function value */
-  FUNCTION : "function"
+  FUNCTION: 'function',
 };
+module.exports = ValueType;

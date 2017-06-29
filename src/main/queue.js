@@ -1,100 +1,102 @@
+var BaseCollection = require('./commons/basecollection');
+
 /**
  * @classdesc Queue
- * 
+ *
  * @constructor
  * @augments BaseCollection
  */
 var Queue = function Queue() {
   BaseCollection.call(this, {
-    _dataStore : []
-  })
-}
+    _dataStore: [],
+  });
+};
 
 Queue.prototype = Object.create(BaseCollection.prototype, {
 
-  constructor : Queue,
+  constructor: Queue,
 
   /**
    * @private
    */
-  _dataStore : {
-    value : undefined,
-    enumerable : true,
-    configurable : false,
-    writable : true
+  _dataStore: {
+    value: undefined,
+    enumerable: true,
+    configurable: false,
+    writable: true,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof Queue.prototype
-   */    
-  enqueue : {
-    value : function (element) {
-      this._dataStore.push(element)
+   */
+  enqueue: {
+    value: function(element) {
+      this._dataStore.push(element);
     },
-    configurable : false
+    configurable: false,
   },
 
   /**
-   * 
-   * @method
-   * @memberof Queue.prototype
-   * @return {value}
-   */  
-  dequeue : {
-    value : function () {
-      return this._dataStore.shift()
-    },
-    configurable : false
-  },
-
-  /**
-   * 
+   *
    * @method
    * @memberof Queue.prototype
    * @return {value}
    */
-  front : {
-    value : function () {
-      return this._dataStore[0]
+  dequeue: {
+    value: function() {
+      return this._dataStore.shift();
     },
-    configurable : false
+    configurable: false,
   },
 
   /**
-   * 
+   *
    * @method
    * @memberof Queue.prototype
    * @return {value}
    */
-  back : {
-    value : function () {
-      return this._dataStore[this._dataStore.length - 1]
+  front: {
+    value: function() {
+      return this._dataStore[0];
     },
-    configurable : false
+    configurable: false,
+  },
+
+  /**
+   *
+   * @method
+   * @memberof Queue.prototype
+   * @return {value}
+   */
+  back: {
+    value: function() {
+      return this._dataStore[this._dataStore.length - 1];
+    },
+    configurable: false,
   },
 
   /**
    * @inheritdoc
    * @memberof Queue.prototype
    */
-  length : {
-    get : function () {
-      return this._dataStore.length
+  length: {
+    get: function() {
+      return this._dataStore.length;
     },
-    configurable : false
+    configurable: false,
   },
 
   /**
    * @inheritdoc
    * @memberof Queue.prototype
    */
-  empty : {
-    get : function () {
-      return this._dataStore.length == 0
+  empty: {
+    get: function() {
+      return this._dataStore.length == 0;
     },
-    configurable : false
+    configurable: false,
   },
 
   /**
@@ -102,10 +104,12 @@ Queue.prototype = Object.create(BaseCollection.prototype, {
    * @method
    * @memberof Queue.prototype
    */
-  clear : {
-    value : function () {
-      this._dataStore = []
+  clear: {
+    value: function() {
+      this._dataStore = [];
     },
-    configurable : false
-  }
-})
+    configurable: false,
+  },
+});
+
+module.exports = Queue;

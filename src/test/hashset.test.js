@@ -1,604 +1,615 @@
-describe('A test suite HashSet', function () {
-  beforeEach(function () {
-  })
-  afterEach(function () {
-  })
+/* global test, require, expect, describe, beforeEach afterEach */
 
-  it('should be union set success', function () {
-    var hashSet01 = new HashSet();
-    
+describe('A test suite HashSet', function() {
+  const HashSet = require('../main/index').HashSet;
+  beforeEach(function() {
+  });
+  afterEach(function() {
+  });
+
+  test('should be union set success', function() {
+    const hashSet01 = new HashSet();
+
     hashSet01.add(1);
     hashSet01.add(2);
     hashSet01.add(3);
-    
-    var hashSet02 = new HashSet();
-    
+
+    const hashSet02 = new HashSet();
+
     hashSet02.add(4);
     hashSet02.add(5);
-    hashSet02.add(6);    
+    hashSet02.add(6);
 
-    var hashSet = hashSet01.union(hashSet02);
+    const hashSet = hashSet01.union(hashSet02);
 
-    assert.equal(6, hashSet.length);
-    
-    hashSet.forEach(function(index, value){
-      assert.equal(true, hashSet01.contains(value) || hashSet02.contains(value));
+    expect(hashSet.length).toBe(6);
+
+    hashSet.forEach(function(index, value) {
+      expect(hashSet01.contains(value) ||
+        hashSet02.contains(value)).toBe(true);
     });
   });
-  
-  it('should be union same value set success', function () {
-    var hashSet01 = new HashSet();
-    
+
+  test('should be union same value set success', function() {
+    const hashSet01 = new HashSet();
+
     hashSet01.add(1);
     hashSet01.add(2);
     hashSet01.add(3);
-    
-    var hashSet02 = new HashSet();
-    
+
+    const hashSet02 = new HashSet();
+
     hashSet02.add(3);
     hashSet02.add(4);
-    hashSet02.add(5);    
+    hashSet02.add(5);
 
-    var hashSet = hashSet01.union(hashSet02);
-    
-    assert.equal(5, hashSet.length);
-    
-    hashSet01.forEach(function(index, value){
-      assert.equal(true, hashSet.contains(value));
+    const hashSet = hashSet01.union(hashSet02);
+
+    expect(hashSet.length).toBe(5);
+
+    hashSet01.forEach(function(index, value) {
+      expect(hashSet.contains(value)).toBe(true);
     });
-    
-    hashSet02.forEach(function(index, value){
-      assert.equal(true, hashSet.contains(value));
+
+    hashSet02.forEach(function(index, value) {
+      expect(hashSet.contains(value)).toBe(true);
     });
   });
-  
-  it('should be union incompatible object set success', function () {
-    var hashSet01 = new HashSet();
-    
+
+  test('should be union incompatible object set success', function() {
+    const hashSet01 = new HashSet();
+
     hashSet01.add(1);
     hashSet01.add(2);
     hashSet01.add(3);
-    
-    var hashSet02 = new Array();
-    
+
+    const hashSet02 = [];
+
     hashSet02.push(3);
     hashSet02.push(4);
-    hashSet02.push(5);    
+    hashSet02.push(5);
 
     expect(function() {
       hashSet01.union(hashSet02);
-    }).throw();
+    })
+      .toThrowError();
   });
-  
-  it('should be intersect set success', function () {
-    var hashSet01 = new HashSet();
-    
+
+  test('should be intersect set success', function() {
+    const hashSet01 = new HashSet();
+
     hashSet01.add(1);
     hashSet01.add(2);
     hashSet01.add(3);
-    
-    var hashSet02 = new HashSet();
-    
+
+    const hashSet02 = new HashSet();
+
     hashSet02.add(1);
     hashSet02.add(5);
-    hashSet02.add(3);    
+    hashSet02.add(3);
 
-    var hashSet = hashSet01.intersect(hashSet02);
+    const hashSet = hashSet01.intersect(hashSet02);
 
-    assert.equal(2, hashSet.length);
-    
-    hashSet.forEach(function(index, value){
-      assert.equal(true, hashSet01.contains(value) || hashSet02.contains(value));
+    expect(hashSet.length).toBe(2);
+
+    hashSet.forEach(function(index, value) {
+      expect(hashSet01.contains(value) ||
+        hashSet02.contains(value)).toBe(true);
     });
   });
-  
-  it('should be intersect diferent values set success', function () {
-    var hashSet01 = new HashSet();
-    
+
+  test('should be intersect diferent values set success', function() {
+    const hashSet01 = new HashSet();
+
     hashSet01.add(1);
     hashSet01.add(2);
     hashSet01.add(3);
-    
-    var hashSet02 = new HashSet();
-    
+
+    const hashSet02 = new HashSet();
+
     hashSet02.add(4);
     hashSet02.add(5);
-    hashSet02.add(6);    
+    hashSet02.add(6);
 
-    var hashSet = hashSet01.intersect(hashSet02);
-    
-    assert.equal(0, hashSet.length);
-    
-    hashSet01.forEach(function(index, value){
-      assert.equal(false, hashSet.contains(value));
+    const hashSet = hashSet01.intersect(hashSet02);
+
+    expect(hashSet.length).toBe(0);
+
+    hashSet01.forEach(function(index, value) {
+      expect(hashSet.contains(value)).toBe(false);
     });
-    
-    hashSet02.forEach(function(index, value){
-      assert.equal(false, hashSet.contains(value));
+
+    hashSet02.forEach(function(index, value) {
+      expect(hashSet.contains(value)).toBe(false);
     });
   });
-  
-  it('should be intersect incompatible object set success', function () {
-    var hashSet01 = new HashSet();
-    
+
+  test('should be intersect incompatible object set success', function() {
+    const hashSet01 = new HashSet();
+
     hashSet01.add(1);
     hashSet01.add(2);
     hashSet01.add(3);
-    
-    var hashSet02 = new Array();
-    
+
+    const hashSet02 = [];
+
     hashSet02.push(3);
     hashSet02.push(4);
-    hashSet02.push(5);    
+    hashSet02.push(5);
 
     expect(function() {
       hashSet01.intersect(hashSet02);
-    }).throw();
+    })
+      .toThrowError();
   });
-  
-  it('should be except set success', function () {
-    var hashSet01 = new HashSet();
-    
+
+  test('should be except set success', function() {
+    const hashSet01 = new HashSet();
+
     hashSet01.add(1);
     hashSet01.add(2);
     hashSet01.add(3);
-    
-    var hashSet02 = new HashSet();
-    
+
+    const hashSet02 = new HashSet();
+
     hashSet02.add(1);
     hashSet02.add(5);
-    hashSet02.add(3);    
+    hashSet02.add(3);
 
-    var hashSet = hashSet01.except(hashSet02);
+    const hashSet = hashSet01.except(hashSet02);
 
-    assert.equal(1, hashSet.length);
-    
-    hashSet.forEach(function(index, value){
-      assert.equal(true, hashSet01.contains(value) || hashSet02.contains(value));
+    expect(hashSet.length).toBe(1);
+
+    hashSet.forEach(function(index, value) {
+      expect(hashSet01.contains(value) ||
+        hashSet02.contains(value)).toBe(true);
     });
   });
-  
-  it('should be except diferent values set success', function () {
-    var hashSet01 = new HashSet();
-    
+
+  test('should be except diferent values set success', function() {
+    const hashSet01 = new HashSet();
+
     hashSet01.add(1);
     hashSet01.add(2);
     hashSet01.add(3);
-    
-    var hashSet02 = new HashSet();
-    
+
+    const hashSet02 = new HashSet();
+
     hashSet02.add(4);
     hashSet02.add(5);
-    hashSet02.add(6);    
+    hashSet02.add(6);
 
-    var hashSet = hashSet01.except(hashSet02);
-    
-    assert.equal(3, hashSet.length);
-    
-    hashSet01.forEach(function(index, value){
-      assert.equal(true, hashSet.contains(value));
+    const hashSet = hashSet01.except(hashSet02);
+
+    expect(hashSet.length).toBe(3);
+
+    hashSet01.forEach(function(index, value) {
+      expect(hashSet.contains(value)).toBe(true);
     });
-    
-    hashSet02.forEach(function(index, value){
-      assert.equal(false, hashSet.contains(value));
+
+    hashSet02.forEach(function(index, value) {
+      expect(hashSet.contains(value)).toBe(false);
     });
   });
-  
-  it('should be except incompatible object set success', function () {
-    var hashSet01 = new HashSet();
-    
+
+  test('should be except incompatible object set success', function() {
+    const hashSet01 = new HashSet();
+
     hashSet01.add(1);
     hashSet01.add(2);
     hashSet01.add(3);
-    
-    var hashSet02 = new Array();
-    
+
+    const hashSet02 = [];
+
     hashSet02.push(3);
     hashSet02.push(4);
-    hashSet02.push(5);    
+    hashSet02.push(5);
 
     expect(function() {
       hashSet01.except(hashSet02);
-    }).throw();
+    })
+      .toThrowError();
   });
-  
-  it('should be use custom hash code function success', function () {
+
+  test('should be use custom hash code function success', function() {
     var count = 0;
-    
-    var hashSet = new HashSet(function(value){
+
+    const hashSet = new HashSet(function() {
       return count++;
     });
 
-    assert.equal(true, hashSet.add({
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        pp1 : "pp1"
-      }
-    }));
-    assert.equal(true, hashSet.add(null));
-    assert.equal(true, hashSet.add("string"));
-    assert.equal(true, hashSet.add(100));
-    assert.equal(true, hashSet.add(100.12));
-    assert.equal(true, hashSet.add(true));
-    assert.equal(true, hashSet.add(false));
+    expect(hashSet.add({
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        pp1: 'pp1',
+      },
+    })).toBe(true);
 
-    assert.equal(7, hashSet.length);
+    expect(hashSet.add(null)).toBe(true);
+    expect(hashSet.add('string')).toBe(true);
+    expect(hashSet.add(100)).toBe(true);
+    expect(hashSet.add(100.12)).toBe(true);
+    expect(hashSet.add(true)).toBe(true);
+    expect(hashSet.add(false)).toBe(true);
+
+    expect(hashSet.length).toBe(7);
 
     var keys = [0, 1, 2, 3, 4, 5, 6];
-    
-    keys.forEach(function(key, index){
-      assert.equal(true, hashSet.containsKey(key));
+
+    keys.forEach(function(key) {
+      expect(hashSet.containsKey(key)).toBe(true);
     });
   });
-  
-  it('should be use custom null hash code function success', function () {
-    var count = 0;
-    
-    var hashSet = new HashSet(null);
 
-    assert.equal(true, hashSet.add({
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        pp1 : "pp1"
-      }
-    }));
-    assert.equal(true, hashSet.add(null));
-    assert.equal(true, hashSet.add("string"));
-    assert.equal(true, hashSet.add(100));
-    assert.equal(true, hashSet.add(100.12));
-    assert.equal(true, hashSet.add(true));
-    assert.equal(true, hashSet.add(false));
+  test('should be use custom null hash code function success', function() {
+    const hashSet = new HashSet(null);
 
-    assert.equal(7, hashSet.length);
-  });  
-  
-  it('should be add values success', function () {
-    var hashSet = new HashSet();
+    expect(hashSet.add({
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        pp1: 'pp1',
+      },
+    })).toBe(true);
 
-    assert.equal(true, hashSet.add({
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        pp1 : "pp1"
-      }
-    }));
-    assert.equal(true, hashSet.add(null));
-    assert.equal(true, hashSet.add("string"));
-    assert.equal(true, hashSet.add(100));
-    assert.equal(true, hashSet.add(100.12));
-    assert.equal(true, hashSet.add(true));
-    assert.equal(true, hashSet.add(false));
+    expect(hashSet.add(null)).toBe(true);
+    expect(hashSet.add('string')).toBe(true);
+    expect(hashSet.add(100)).toBe(true);
+    expect(hashSet.add(100.12)).toBe(true);
+    expect(hashSet.add(true)).toBe(true);
+    expect(hashSet.add(false)).toBe(true);
 
-    assert.equal(7, hashSet.length);
+    expect(hashSet.length).toBe(7);
   });
 
-  it('should be add duplicate value success', function () {
-    var hashSet = new HashSet();
+  test('should be add values success', function() {
+    const hashSet = new HashSet();
 
-    assert.equal(true, hashSet.add("string"));
-    assert.equal(false, hashSet.add("string"));
+    expect(hashSet.add({
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        pp1: 'pp1',
+      },
+    })).toBe(true);
+    expect(hashSet.add(null)).toBe(true);
+    expect(hashSet.add('string')).toBe(true);
+    expect(hashSet.add(100)).toBe(true);
+    expect(hashSet.add(100.12)).toBe(true);
+    expect(hashSet.add(true)).toBe(true);
+    expect(hashSet.add(false)).toBe(true);
+
+    expect(hashSet.length).toBe(7);
   });
 
-  it('should be add value and remove unset value success', function () {
-    var hashSet = new HashSet();
+  test('should be add duplicate value success', function() {
+    const hashSet = new HashSet();
 
-    assert.equal(true, hashSet.add("string"));
-    assert.equal(true, hashSet.remove("string"));
-    assert.equal(false, hashSet.remove("string"));
+    expect(hashSet.add('string')).toBe(true);
+    expect(hashSet.add('string')).toBe(false);
   });
 
-  it('should be add values and remove values success', function () {
-    var hashSet = new HashSet();
+  test('should be add value and remove unset value success', function() {
+    const hashSet = new HashSet();
+
+    expect(hashSet.add('string')).toBe(true);
+    expect(hashSet.remove('string')).toBe(true);
+    expect(hashSet.remove('string')).toBe(false);
+  });
+
+  test('should be add values and remove values success', function() {
+    const hashSet = new HashSet();
 
     var obj1 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "1"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '1',
+      },
     };
     var obj2 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "2"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '2',
+      },
     };
 
-    assert.equal(true, hashSet.add(obj1));
-    assert.equal(true, hashSet.add(obj2));
+    expect(hashSet.add(obj1)).toBe(true);
+    expect(hashSet.add(obj2)).toBe(true);
 
-    assert.equal(2, hashSet.length);
+    expect(hashSet.length).toBe(2);
 
-    assert.equal(true, hashSet.remove(obj1));
-    assert.equal(true, hashSet.remove(obj2));
+    expect(hashSet.remove(obj1)).toBe(true);
+    expect(hashSet.remove(obj2)).toBe(true);
 
-    assert.equal(0, hashSet.length);
+    expect(hashSet.length).toBe(0);
   });
 
-  it('should be add values and check contains values success', function () {
-    var hashSet = new HashSet();
+  test('should be add values and check contains values success', function() {
+    const hashSet = new HashSet();
 
     var obj1 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "1"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '1',
+      },
     };
     var obj2 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "2"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '2',
+      },
     };
 
-    assert.equal(true, hashSet.add(obj1));
-    assert.equal(true, hashSet.add(obj2));
+    expect(hashSet.add(obj1)).toBe(true);
+    expect(hashSet.add(obj2)).toBe(true);
 
-    assert.equal(true, hashSet.contains(obj1));
-    assert.equal(true, hashSet.contains(obj2));
+    expect(hashSet.contains(obj1)).toBe(true);
+    expect(hashSet.contains(obj2)).toBe(true);
   });
 
-  it('should be add values and check contains key success', function () {
-    var hashSet = new HashSet();
+  test('should be add values and check contains key success', function() {
+    const hashSet = new HashSet();
 
     var obj1 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "1"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '1',
+      },
     };
     var obj2 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "2"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '2',
+      },
     };
 
     var key1 = hashSet.hashCode(obj1);
     var key2 = hashSet.hashCode(obj2);
 
-    assert.equal(true, hashSet.add(obj1));
-    assert.equal(true, hashSet.add(obj2));
+    expect(hashSet.add(obj1)).toBe(true);
+    expect(hashSet.add(obj2)).toBe(true);
 
-    assert.equal(true, hashSet.containsKey(key1));
-    assert.equal(true, hashSet.containsKey(key2));
+    expect(hashSet.containsKey(key1)).toBe(true);
+    expect(hashSet.containsKey(key2)).toBe(true);
   });
 
-  it('should be add values and check keys success', function () {
-    var hashSet = new HashSet();
+  test('should be add values and check keys success', function() {
+    const hashSet = new HashSet();
 
     var obj1 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "1"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '1',
+      },
     };
     var obj2 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "2"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '2',
+      },
     };
 
     var map = {};
     map[hashSet.hashCode(obj1)] = true;
     map[hashSet.hashCode(obj2)] = true;
 
-    assert.equal(true, hashSet.add(obj1));
-    assert.equal(true, hashSet.add(obj2));
+    expect(hashSet.add(obj1)).toBe(true);
+    expect(hashSet.add(obj2)).toBe(true);
 
-    hashSet.keys().forEach(function (key) {
-      assert.equal(true, map[key]);
+    hashSet.keys().forEach(function(key) {
+      expect(map[key]).toBe(true);
     });
   });
 
-  it('should be add values and check values success', function () {
-    var hashSet = new HashSet();
+  test('should be add values and check values success', function() {
+    const hashSet = new HashSet();
 
     var obj1 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "1"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '1',
+      },
     };
     var obj2 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "2"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '2',
+      },
     };
 
     var map = {};
     map[hashSet.hashCode(obj1)] = obj1;
     map[hashSet.hashCode(obj2)] = obj2;
 
-    assert.equal(true, hashSet.add(obj1));
-    assert.equal(true, hashSet.add(obj2));
+    expect(hashSet.add(obj1)).toBe(true);
+    expect(hashSet.add(obj2)).toBe(true);
 
-    hashSet.values().forEach(function (value) {
+    hashSet.values().forEach(function(value) {
       var key = hashSet.hashCode(value);
-      assert.equal(value, map[key]);
+      expect(map[key]).toBe(value);
     });
   });
 
-  it('should be add values and check entries success', function () {
-    var hashSet = new HashSet();
+  test('should be add values and check entries success', function() {
+    const hashSet = new HashSet();
 
     var obj1 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "1"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '1',
+      },
     };
     var obj2 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "2"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '2',
+      },
     };
 
     var map = {};
     map[hashSet.hashCode(obj1)] = obj1;
     map[hashSet.hashCode(obj2)] = obj2;
 
-    assert.equal(true, hashSet.add(obj1));
-    assert.equal(true, hashSet.add(obj2));
+    expect(hashSet.add(obj1)).toBe(true);
+    expect(hashSet.add(obj2)).toBe(true);
 
     var entries = hashSet.entries();
 
-    for ( var property in entries) {
-      assert.equal(map[property], entries[property]);
+    for (var property in entries) {
+      expect(map[property]).toBe(entries[property]);
     }
   });
 
-  it('should be add values and clear success', function () {
-    var hashSet = new HashSet();
+  test('should be add values and clear success', function() {
+    const hashSet = new HashSet();
 
     var obj1 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "1"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '1',
+      },
     };
     var obj2 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "2"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '2',
+      },
     };
 
-    assert.equal(true, hashSet.add(obj1));
-    assert.equal(true, hashSet.add(obj2));
+    expect(hashSet.add(obj1)).toBe(true);
+    expect(hashSet.add(obj2)).toBe(true);
 
     hashSet.clear();
 
-    assert.equal(0, hashSet.length);
+    expect(hashSet.length).toBe(0);
   });
 
-  it('should be add values and remove all success', function () {
-    var hashSet = new HashSet();
+  test('should be add values and remove all success', function() {
+    const hashSet = new HashSet();
 
     var obj1 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "1"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '1',
+      },
     };
     var obj2 = {
-      p0 : null,
-      p1 : "p1",
-      p2 : 1,
-      p3 : true,
-      p4 : {
-        obj : "2"
-      }
+      p0: null,
+      p1: 'p1',
+      p2: 1,
+      p3: true,
+      p4: {
+        obj: '2',
+      },
     };
 
-    assert.equal(true, hashSet.add(obj1));
-    assert.equal(true, hashSet.add(obj2));
+    expect(hashSet.add(obj1)).toBe(true);
+    expect(hashSet.add(obj2)).toBe(true);
 
-    assert.equal(true, hashSet.remove(obj1));
-    assert.equal(true, hashSet.remove(obj2));
+    expect(hashSet.remove(obj1)).toBe(true);
+    expect(hashSet.remove(obj2)).toBe(true);
 
-    assert.equal(true, hashSet.empty);
+    expect(hashSet.empty).toBe(true);
   });
 
-  it('should be add values and iterate success', function () {
-    var hashSet = new HashSet();
+  test('should be add values and iterate success', function() {
+    const hashSet = new HashSet();
 
-    assert.equal(true, hashSet.add(0));
-    assert.equal(true, hashSet.add(1));
-    assert.equal(true, hashSet.add(2));
-    assert.equal(true, hashSet.add(3));
-    assert.equal(true, hashSet.add(4));
-    assert.equal(true, hashSet.add(5));
+    expect(hashSet.add(0)).toBe(true);
+    expect(hashSet.add(1)).toBe(true);
+    expect(hashSet.add(2)).toBe(true);
+    expect(hashSet.add(3)).toBe(true);
+    expect(hashSet.add(4)).toBe(true);
+    expect(hashSet.add(5)).toBe(true);
 
     var iterator = hashSet.iterator();
 
     while (iterator.hasNext()) {
       var index = iterator.nextIndex();
       var current = iterator.next();
-      assert.equal(index, current);
+      expect(index).toBe(current);
     }
   });
 
-  it('should be add values and forEach success', function () {
-    var hashSet = new HashSet();
+  test('should be add values and forEach success', function() {
+    const hashSet = new HashSet();
 
-    assert.equal(true, hashSet.add(0));
-    assert.equal(true, hashSet.add(1));
-    assert.equal(true, hashSet.add(2));
-    assert.equal(true, hashSet.add(3));
-    assert.equal(true, hashSet.add(4));
-    assert.equal(true, hashSet.add(5));
+    expect(hashSet.add(0)).toBe(true);
+    expect(hashSet.add(1)).toBe(true);
+    expect(hashSet.add(2)).toBe(true);
+    expect(hashSet.add(3)).toBe(true);
+    expect(hashSet.add(4)).toBe(true);
+    expect(hashSet.add(5)).toBe(true);
 
-    hashSet.forEach(function (index, node) {
-      assert.equal(index, node);
+    hashSet.forEach(function(index, node) {
+      expect(index).toBe(node);
     });
   });
 
-  it('should be add values and forEach invalid predicate success', function () {
-    var hashSet = new HashSet();
+  test('should be add values and forEach invalid predicate success',
+    //TODO: Review this test.
+    function() {
+      const hashSet = new HashSet();
 
-    assert.equal(true, hashSet.add(0));
-    assert.equal(true, hashSet.add(1));
-    assert.equal(true, hashSet.add(2));
-    assert.equal(true, hashSet.add(3));
-    assert.equal(true, hashSet.add(4));
-    assert.equal(true, hashSet.add(5));
+      expect(hashSet.add(0)).toBe(true);
+      expect(hashSet.add(1)).toBe(true);
+      expect(hashSet.add(2)).toBe(true);
+      expect(hashSet.add(3)).toBe(true);
+      expect(hashSet.add(4)).toBe(true);
+      expect(hashSet.add(5)).toBe(true);
 
-    hashSet.forEach({});
-  });
-})
+      hashSet.forEach({});
+    });
+});

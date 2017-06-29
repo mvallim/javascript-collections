@@ -1,11 +1,14 @@
-describe("A test suite LinkedList", function () {
-  beforeEach(function () {
+/* global test, require, expect, describe, beforeEach afterEach */
+
+describe('A test suite LinkedList', function() {
+  const LinkedList = require('../main/index').LinkedList;
+  beforeEach(function() {
   });
-  afterEach(function () {
+  afterEach(function() {
   });
 
-  it('should be add values and get first element success', function () {
-    var linkedList = new LinkedList();
+  test('should be add values and get first element success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(1);
     linkedList.add(2);
@@ -14,73 +17,81 @@ describe("A test suite LinkedList", function () {
     linkedList.add(5);
     linkedList.add(6);
 
-    var first = linkedList.first();
+    const first = linkedList.first();
 
-    assert.equal(1, first.value);
+    expect(first.value).toBe(1);
   });
-  
-  it('should be addAt value out of index success', function () {
-    var linkedList = new LinkedList();
+
+  test('should be addAt value out of index success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(1);
     linkedList.add(2);
-    
+
     expect(function() {
       linkedList.addAt(100, 1);
-    }).throw();
-    
+    })
+      .toThrowError();
+
     expect(function() {
       linkedList.addAt(-1, 1);
-    }).throw();
+    })
+      .toThrowError();
   });
-  
-  it('should be removeAt value out of index success', function () {
-    var linkedList = new LinkedList();
-    
+
+  test('should be removeAt value out of index success', function() {
+    const linkedList = new LinkedList();
+
     linkedList.add(1);
     linkedList.add(2);
-    
-    expect(function() { 
+
+    expect(function() {
       linkedList.removeAt(100);
-    }).throw();
-    
-    expect(function() { 
+    })
+      .toThrowError();
+
+    expect(function() {
       linkedList.removeAt(-1);
-    }).throw();
+    })
+      .toThrowError();
   });
-  
-  it('should be get value out of index success', function () {
-    var linkedList = new LinkedList();
+
+  test('should be get value out of index success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(1);
     linkedList.add(2);
-    
-    expect(function() { 
+
+    expect(function() {
       linkedList.get(100);
-    }).throw();
-    
-    expect(function() { 
+    })
+      .toThrowError();
+
+    expect(function() {
       linkedList.get(-1);
-    }).throw();
+    })
+      .toThrowError();
   });
 
-  it('should be set value out of index success', function () {
-    var linkedList = new LinkedList();
+  test('should be set value out of index success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(1);
     linkedList.add(2);
-    
-    expect(function() { 
+
+    expect(function() {
       linkedList.set(100, {});
-    }).throw();
-    
-    expect(function() { 
+    })
+      .toThrowError();
+
+    expect(function() {
       linkedList.set(-1, {});
-    }).throw();
+    })
+      .toThrowError();
   });
 
-  it('should be add values and get last element success', function () {
-    var linkedList = new LinkedList();
+  test('should be add values and get last element success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(1);
     linkedList.add(2);
@@ -91,11 +102,32 @@ describe("A test suite LinkedList", function () {
 
     var last = linkedList.last();
 
-    assert.equal(6, last.value);
+    expect(last.value).toBe(6);
   });
 
-  it('should be add values and get first element and iterate success', function () {
-    var linkedList = new LinkedList();
+  test('should be add values and get first element and iterate success',
+    function() {
+      const linkedList = new LinkedList();
+
+      linkedList.add(1);
+      linkedList.add(2);
+      linkedList.add(3);
+      linkedList.add(4);
+      linkedList.add(5);
+      linkedList.add(6);
+
+      let current = linkedList.first();
+      let count = 1;
+
+      while (current != undefined) {
+        expect(count).toBe(current.value);
+        current = current.next;
+        count++;
+      }
+    });
+
+  test('should be addAt values and get element success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(1);
     linkedList.add(2);
@@ -104,48 +136,28 @@ describe("A test suite LinkedList", function () {
     linkedList.add(5);
     linkedList.add(6);
 
-    var current = linkedList.first();
-    var count = 1;
-
-    while (current != undefined) {
-      assert.equal(count, current.value);
-      current = current.next;
-      count++;
-    }
-  });
-
-  it('should be addAt values and get element success', function () {
-    var linkedList = new LinkedList();
-
-    linkedList.add(1);
-    linkedList.add(2);
-    linkedList.add(3);
-    linkedList.add(4);
-    linkedList.add(5);
-    linkedList.add(6);
-
-    assert.equal(4, linkedList.get(3).value);
+    expect(linkedList.get(3).value).toBe(4);
 
     linkedList.addAt(3, 13);
 
-    assert.equal(13, linkedList.get(3).value);
-    
+    expect(linkedList.get(3).value).toBe(13);
+
     linkedList.addAt(0, 14);
-    
-    assert.equal(14, linkedList.get(0).value);
 
-    var index = linkedList.length - 1;
-       
+    expect(linkedList.get(0).value).toBe(14);
+
+    const index = linkedList.length - 1;
+
     linkedList.addAt(index, 15);
-    
-    assert.equal(15, linkedList.get(index+1).value);
 
-    assert.equal(4, linkedList.get(5).value);
-       
-    assert.equal(6, linkedList.get(index).value);
+    expect(linkedList.get(index + 1).value).toBe(15);
+
+    expect(linkedList.get(5).value).toBe(4);
+
+    expect(linkedList.get(index).value).toBe(6);
   });
 
-  it('should be remove value and get element success', function () {
+  test('should be remove value and get element success', function() {
     var linkedList = new LinkedList();
 
     linkedList.add(1);
@@ -155,19 +167,19 @@ describe("A test suite LinkedList", function () {
     linkedList.add(5);
     linkedList.add(6);
 
-    var node = linkedList.get(3);
+    let node = linkedList.get(3);
 
-    assert.equal(4, node.value);
+    expect(node.value).toBe(4);
 
     linkedList.remove(4);
 
-    var node = linkedList.get(3);
+    node = linkedList.get(3);
 
-    assert.equal(5, node.value);
+    expect(node.value).toBe(5);
   });
 
-  it('should be remove values and get element success', function () {
-    var linkedList = new LinkedList();
+  test('should be remove values and get element success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(1);
     linkedList.add(2);
@@ -176,19 +188,19 @@ describe("A test suite LinkedList", function () {
     linkedList.add(5);
     linkedList.add(6);
 
-    var node = linkedList.get(3);
+    let node = linkedList.get(3);
 
-    assert.equal(4, node.value);
+    expect(node.value).toBe(4);
 
     linkedList.remove(4);
 
-    var node = linkedList.get(3);
+    node = linkedList.get(3);
 
-    assert.equal(5, node.value);
+    expect(node.value).toBe(5);
   });
 
-  it('should be remove values and update index element success', function () {
-    var linkedList = new LinkedList();
+  test('should be remove values and update index element success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(1);
     linkedList.add(2);
@@ -197,27 +209,45 @@ describe("A test suite LinkedList", function () {
     linkedList.add(4);
     linkedList.add(2);
 
-    var node01 = linkedList.get(0);
-    var node02 = linkedList.get(2);
-    var node03 = linkedList.get(4);
+    const node01 = linkedList.get(0);
+    const node02 = linkedList.get(2);
+    const node03 = linkedList.get(4);
 
-    assert.equal(1, node01.value);
-
-    assert.equal(3, node02.value);
-
-    assert.equal(4, node03.value);
+    expect(node01.value).toBe(1);
+    expect(node02.value).toBe(3);
+    expect(node03.value).toBe(4);
 
     linkedList.remove(2);
 
-    assert.equal(1, node01.value);
-
-    assert.equal(3, node02.value);
-
-    assert.equal(4, node03.value);
+    expect(node01.value).toBe(1);
+    expect(node02.value).toBe(3);
+    expect(node03.value).toBe(4);
   });
 
-  it('should be removeAt value and update index element success', function () {
-    var linkedList = new LinkedList();
+  test('should be removeAt value and update index element success',
+    function() {
+      const linkedList = new LinkedList();
+
+      linkedList.add(1);
+      linkedList.add(2);
+      linkedList.add(3);
+      linkedList.add(2);
+      linkedList.add(4);
+      linkedList.add(2);
+
+      let node = linkedList.get(2);
+
+      expect(node.value).toBe(3);
+
+      linkedList.removeAt(2);
+
+      node = linkedList.get(2);
+
+      expect(node.value).toBe(2);
+    });
+
+  test('should be add values and length success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(1);
     linkedList.add(2);
@@ -226,66 +256,47 @@ describe("A test suite LinkedList", function () {
     linkedList.add(4);
     linkedList.add(2);
 
-    var node = linkedList.get(2);
-
-    assert.equal(3, node.value);
-
-    linkedList.removeAt(2);
-
-    var node = linkedList.get(2);
-
-    assert.equal(2, node.value);
+    expect(linkedList.length).toBe(6);
   });
 
-  it('should be add values and length success', function () {
-    var linkedList = new LinkedList();
+  test('should be add values and removeAt one by one using head success',
+    function() {
+      let linkedList = new LinkedList();
 
-    linkedList.add(1);
-    linkedList.add(2);
-    linkedList.add(3);
-    linkedList.add(2);
-    linkedList.add(4);
-    linkedList.add(2);
+      linkedList.add(1);
+      linkedList.add(2);
+      linkedList.add(3);
+      linkedList.add(2);
+      linkedList.add(4);
+      linkedList.add(2);
 
-    assert.equal(6, linkedList.length);
-  });
+      while (!linkedList.empty) {
+        linkedList.removeAt(0);
+      }
 
-  it('should be add values and removeAt one by one using head success', function () {
-    var linkedList = new LinkedList();
+      expect(linkedList.empty).toBe(true);
+    });
 
-    linkedList.add(1);
-    linkedList.add(2);
-    linkedList.add(3);
-    linkedList.add(2);
-    linkedList.add(4);
-    linkedList.add(2);
+  test('should be add values and removeAt one by one using tail success',
+    function() {
+      let linkedList = new LinkedList();
 
-    while (!linkedList.empty) {
-      linkedList.removeAt(0);
-    }
+      linkedList.add(1);
+      linkedList.add(2);
+      linkedList.add(3);
+      linkedList.add(2);
+      linkedList.add(4);
+      linkedList.add(2);
 
-    assert.equal(true, linkedList.empty);
-  });
+      while (!linkedList.empty) {
+        linkedList.removeAt(linkedList.length - 1);
+      }
 
-  it('should be add values and removeAt one by one using tail success', function () {
-    var linkedList = new LinkedList();
+      expect(linkedList.empty).toBe(true);
+    });
 
-    linkedList.add(1);
-    linkedList.add(2);
-    linkedList.add(3);
-    linkedList.add(2);
-    linkedList.add(4);
-    linkedList.add(2);
-
-    while (!linkedList.empty) {
-      linkedList.removeAt(linkedList.length - 1);
-    }
-
-    assert.equal(true, linkedList.empty);
-  });
-
-  it('should be add values and remove value one by one success', function () {
-    var linkedList = new LinkedList();
+  test('should be add values and remove value one by one success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(2);
     linkedList.add(2);
@@ -298,11 +309,11 @@ describe("A test suite LinkedList", function () {
       linkedList.remove(2);
     }
 
-    assert.equal(true, linkedList.empty);
+    expect(linkedList.empty).toBe(true);
   });
 
-  it('should be add values and clear success', function () {
-    var linkedList = new LinkedList();
+  test('should be add values and clear success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(1);
     linkedList.add(2);
@@ -313,11 +324,11 @@ describe("A test suite LinkedList", function () {
 
     linkedList.clear();
 
-    assert.equal(0, linkedList.length);
+    expect(linkedList.length).toBe(0);
   });
 
-  it('should be add values and set success', function () {
-    var linkedList = new LinkedList();
+  test('should be add values and set success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(1);
     linkedList.add(2);
@@ -333,16 +344,16 @@ describe("A test suite LinkedList", function () {
     linkedList.set(4, 2);
     linkedList.set(5, 2);
 
-    var current = linkedList.first();
+    let current = linkedList.first();
 
     while (current != null) {
-      assert.equal(2, current.value);
+      expect(current.value).toBe(2);
       current = current.next;
     }
   });
 
-  it('should be add values and iterate success', function () {
-    var linkedList = new LinkedList();
+  test('should be add values and iterate success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(0);
     linkedList.add(1);
@@ -351,17 +362,17 @@ describe("A test suite LinkedList", function () {
     linkedList.add(4);
     linkedList.add(5);
 
-    var iterator = linkedList.iterator();
+    const iterator = linkedList.iterator();
 
     while (iterator.hasNext()) {
-      var index = iterator.nextIndex();
-      var next = iterator.next();
-      assert.equal(index, next.value);
+      const index = iterator.nextIndex();
+      const next = iterator.next();
+      expect(index).toBe(next.value);
     }
   });
 
-  it('should be add values and forEach success', function () {
-    var linkedList = new LinkedList();
+  test('should be add values and forEach success', function() {
+    const linkedList = new LinkedList();
 
     linkedList.add(0);
     linkedList.add(1);
@@ -370,21 +381,24 @@ describe("A test suite LinkedList", function () {
     linkedList.add(4);
     linkedList.add(5);
 
-    linkedList.forEach(function (index, node) {
-      assert.equal(index, node.value);
+    linkedList.forEach(function(index, node) {
+      expect(index).toBe(node.value);
     });
   });
 
-  it('should be add values and forEach invalid predicate success', function () {
-    var linkedList = new LinkedList();
+  test('should be add values and forEach invalid predicate success',
+    function() {
+      const linkedList = new LinkedList();
 
-    linkedList.add(0);
-    linkedList.add(1);
-    linkedList.add(2);
-    linkedList.add(3);
-    linkedList.add(4);
-    linkedList.add(5);
+      linkedList.add(0);
+      linkedList.add(1);
+      linkedList.add(2);
+      linkedList.add(3);
+      linkedList.add(4);
+      linkedList.add(5);
 
-    linkedList.forEach({});
-  });
+      linkedList.forEach({});
+
+      //TODO: Check this test
+    });
 });
