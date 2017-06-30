@@ -9,8 +9,8 @@
 | **Type** 	| **Status** 	|
 |----------	|:----------:	|
 |  Browser 	|  **Done**  	|
-|      AMD 	|     WIP    	|
-| CommonJS 	|     WIP    	|
+|      AMD 	|  **Tests Missing**  	|
+| CommonJS 	|  **Done**   	|
 
 
 ## Development
@@ -28,7 +28,7 @@ Unit test files are located at **/src/test** folder.
 
 Both above scripts "_start_ and _test_" will generate the Code coverage report and will show instantly on the console a percentage summary of code-coverage.
 
-Additionaly will be generated a **/coverage** folder with HTML, LCOV extra formats.
+Additionaly will be generated a **/coverage** folder with HTML, LCOV formats.
 
 You can open /coverage/report-html into browser to have a detailed view file by file.
 
