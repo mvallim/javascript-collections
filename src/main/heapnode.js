@@ -1,4 +1,4 @@
-var BaseObject = require('./commons/base');
+var BaseObject = require('./commons/baseobject');
 
 /**
  * @classdesc HeapNode

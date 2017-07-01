@@ -1,4 +1,5 @@
 var BaseCollection = require('./commons/basecollection');
+
 /**
  * @classdesc Stack
  *

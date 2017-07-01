@@ -1,12 +1,12 @@
-var BaseCollection = require('./commons/basecollection');
+var BaseObject = require('./commons/baseobject');
 
 var LinkedListNode = function LinkedListNode(value) {
-  BaseCollection.call(this, {
+  BaseObject.call(this, {
     _value: value,
   });
 };
 
-LinkedListNode.prototype = Object.create(BaseCollection.prototype, {
+LinkedListNode.prototype = Object.create(BaseObject.prototype, {
 
   constructor: LinkedListNode,
 

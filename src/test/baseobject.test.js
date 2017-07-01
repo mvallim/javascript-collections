@@ -1,7 +1,7 @@
 /* global test, require, expect, describe, beforeEach afterEach */
 
 describe('A test suite BaseCollection', function() {
-  const BaseObject = require('../main/commons/base');
+  const BaseObject = require('../main/commons/baseobject');
   beforeEach(function() {
   });
   afterEach(function() {

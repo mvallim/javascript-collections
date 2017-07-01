@@ -1,4 +1,5 @@
-var BaseObject = require('./base');
+var BaseObject = require('./baseobject');
+
 /**
  * @classdesc The base of all classes in the iterators.
  *

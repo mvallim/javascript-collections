@@ -4,7 +4,7 @@
  * @readonly
  * @enum {string}
  */
-var ValueType = {
+const ValueType = {
   /** Object value */
   OBJECT: 'object',
   /** Boolean value */
@@ -16,4 +16,5 @@ var ValueType = {
   /** Function value */
   FUNCTION: 'function',
 };
+
 module.exports = ValueType;

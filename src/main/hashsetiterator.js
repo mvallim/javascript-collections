@@ -1,4 +1,5 @@
 var BaseIterator = require('./commons/baseiterator');
+
 /**
  * @classdesc An iterator over a HashSet collection.
  * @constructor
