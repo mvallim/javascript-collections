@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/javascript-collections.svg)](https://badge.fury.io/js/javascript-collections)
 [![Build Status](https://travis-ci.org/mvallim/javascript-collections.svg?branch=master)](https://travis-ci.org/mvallim/javascript-collections)
+[![Coverage Status](https://coveralls.io/repos/github/mvallim/javascript-collections/badge.svg?branch=master)](https://coveralls.io/github/mvallim/javascript-collections?branch=master)
 [![API Doc](https://doclets.io/mvallim/javascript-collections/master.svg)](https://doclets.io/mvallim/javascript-collections/master)
 
 # [Isomorphic](https://github.com/mvallim/javascript-collections/issues/4)
