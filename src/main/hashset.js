@@ -257,7 +257,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * hashset.add(1);
    * hashset.add(2);
    *  
-   * hashset.forEach(function(item, index){ 
+   * hashset.forEach(function(index, item){ 
    *   console.log(item); 
    * }); 
    */
@@ -301,7 +301,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    *  
    * hashset.remove(3);
    *  
-   * hashset.forEach(function(item, index){ 
+   * hashset.forEach(function(index, item){ 
    *   console.log(item); 
    * }); 
    */
@@ -399,7 +399,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * 
    * var union = hashset01.union(hashset02);
    *  
-   * union.forEach(function(item, index){ 
+   * union.forEach(function(index, item){ 
    *   console.log(item); 
    * });
    */
@@ -455,7 +455,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * 
    * var intersect = hashset01.intersect(hashset02);
    *  
-   * intersect.forEach(function(item, index){ 
+   * intersect.forEach(function(index, item){ 
    *   console.log(item); 
    * }); 
    */
@@ -505,7 +505,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * 
    * var except = hashset01.except(hashset02);
    *  
-   * except.forEach(function(item, index){ 
+   * except.forEach(function(index, item){ 
    *   console.log(item); 
    * });  
    */
