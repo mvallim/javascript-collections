@@ -21,14 +21,6 @@ var HashSetIterator = require('./hashsetiterator');
  * @augments BaseCollection
  * @param {function}
  *          hashCode A function to generate hashcode of objects in HashSet
- * 
- * @playground var javascriptCollections = require("javascript-collections")
- * 
- * var hashset = javascriptCollections.HashSet();
- * 
- * hashset.add(1); hashset.add(2); hashset.add(3);
- * 
- * hashset.forEach(function(item, index){ console.log(item); });
  */
 var HashSet = function HashSet(hashCode) {
   BaseCollection.call(this, {
