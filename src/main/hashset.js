@@ -250,9 +250,9 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @return {bool}
    * 
    * @playground 
-   * var javascriptCollections = require("javascript-collections")
+   * var HashSet = require("javascript-collections").HashSet;
    * 
-   * var hashset = new javascriptCollections.HashSet();
+   * var hashset = new HashSet();
    * 
    * hashset.add(1);
    * hashset.add(2);
@@ -291,9 +291,9 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @return {bool}
    * 
    * @playground 
-   * var javascriptCollections = require("javascript-collections")
+   * var HashSet = require("javascript-collections").HashSet;
    * 
-   * var hashset = new javascriptCollections.HashSet();
+   * var hashset = new HashSet();
    * 
    * hashset.add(1);
    * hashset.add(2);
@@ -337,9 +337,9 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @return {bool}
    * 
    * @playground 
-   * var javascriptCollections = require("javascript-collections")
+   * var HashSet = require("javascript-collections").HashSet;
    * 
-   * var hashset = new javascriptCollections.HashSet();
+   * var hashset = new HashSet();
    * 
    * hashset.add(1);
    * hashset.add(2);
@@ -386,10 +386,10 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @return {HashSet}
    * 
    * @playground 
-   * var javascriptCollections = require("javascript-collections")
+   * var HashSet = require("javascript-collections").HashSet;
    * 
-   * var hashset01 = new javascriptCollections.HashSet();
-   * var hashset02 = new javascriptCollections.HashSet();
+   * var hashset01 = new HashSet();
+   * var hashset02 = new HashSet();
    * 
    * hashset01.add(1);
    * hashset01.add(2);
@@ -442,10 +442,10 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @return {HashSet}
    * 
    * @playground 
-   * var javascriptCollections = require("javascript-collections")
+   * var HashSet = require("javascript-collections").HashSet;
    * 
-   * var hashset01 = new javascriptCollections.HashSet();
-   * var hashset02 = new javascriptCollections.HashSet();
+   * var hashset01 = new HashSet();
+   * var hashset02 = new HashSet();
    * 
    * hashset01.add(1);
    * hashset01.add(2);
@@ -492,10 +492,10 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @return {HashSet}
    * 
    * @playground 
-   * var javascriptCollections = require("javascript-collections")
+   * var HashSet = require("javascript-collections").HashSet
    * 
-   * var hashset01 = new javascriptCollections.HashSet();
-   * var hashset02 = new javascriptCollections.HashSet();
+   * var hashset01 = new HashSet();
+   * var hashset02 = new HashSet();
    * 
    * hashset01.add(1);
    * hashset01.add(2);
