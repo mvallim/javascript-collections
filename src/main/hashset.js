@@ -248,6 +248,18 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @param {Value}
    *          value
    * @return {bool}
+   * 
+   * @playground 
+   * var javascriptCollections = require("javascript-collections")
+   * 
+   * var hashset = new javascriptCollections.HashSet();
+   * 
+   * hashset.add(1);
+   * hashset.add(2);
+   *  
+   * hashset.forEach(function(item, index){ 
+   *   console.log(item); 
+   * }); 
    */
   add : {
     value : function (value) {
@@ -277,6 +289,21 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @param {Value}
    *          value
    * @return {bool}
+   * 
+   * @playground 
+   * var javascriptCollections = require("javascript-collections")
+   * 
+   * var hashset = new javascriptCollections.HashSet();
+   * 
+   * hashset.add(1);
+   * hashset.add(2);
+   * hashset.add(3);
+   *  
+   * hashset.remove(3);
+   *  
+   * hashset.forEach(function(item, index){ 
+   *   console.log(item); 
+   * }); 
    */
   remove : {
     value : function (value) {
@@ -308,6 +335,17 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @param {Value}
    *          value
    * @return {bool}
+   * 
+   * @playground 
+   * var javascriptCollections = require("javascript-collections")
+   * 
+   * var hashset = new javascriptCollections.HashSet();
+   * 
+   * hashset.add(1);
+   * hashset.add(2);
+   * hashset.add(3);
+   *  
+   * console.log(hashset.contains(2));
    */
   contains : {
     value : function (value) {
@@ -350,8 +388,8 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @playground 
    * var javascriptCollections = require("javascript-collections")
    * 
-   * var hashset01 = javascriptCollections.HashSet();
-   * var hashset02 = javascriptCollections.HashSet();
+   * var hashset01 = new javascriptCollections.HashSet();
+   * var hashset02 = new javascriptCollections.HashSet();
    * 
    * hashset01.add(1);
    * hashset01.add(2);
@@ -406,8 +444,8 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @playground 
    * var javascriptCollections = require("javascript-collections")
    * 
-   * var hashset01 = javascriptCollections.HashSet();
-   * var hashset02 = javascriptCollections.HashSet();
+   * var hashset01 = new javascriptCollections.HashSet();
+   * var hashset02 = new javascriptCollections.HashSet();
    * 
    * hashset01.add(1);
    * hashset01.add(2);
@@ -456,8 +494,8 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
    * @playground 
    * var javascriptCollections = require("javascript-collections")
    * 
-   * var hashset01 = javascriptCollections.HashSet();
-   * var hashset02 = javascriptCollections.HashSet();
+   * var hashset01 = new javascriptCollections.HashSet();
+   * var hashset02 = new javascriptCollections.HashSet();
    * 
    * hashset01.add(1);
    * hashset01.add(2);
