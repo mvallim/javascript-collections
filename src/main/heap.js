@@ -183,7 +183,7 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
    */
   poll: {
     value: function() {
-      var value = this._dataStore[0].Value;
+      var value = this._dataStore[0].value;
 
       this._swap(this._dataStore[0],
         this._dataStore[this._dataStore.length - 1]);
