@@ -98,4 +98,5 @@ HeapNode.prototype = Object.create(BaseObject.prototype, {
     configurable: false,
   },
 });
+
 module.exports = HeapNode;
