@@ -106,8 +106,7 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
         candidate = node.left;
       }
 
-      if (node.hasRight &&
-        this._compare(candidate.value, node.right.value) > 0) {
+      if (node.hasRight && this._compare(candidate.value, node.right.value) > 0) {
         candidate = node.right;
       }
 
@@ -183,10 +182,9 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
    */
   poll: {
     value: function() {
-      var value = this._dataStore[0].value;
+      var node = this._dataStore[0];
 
-      this._swap(this._dataStore[0],
-        this._dataStore[this._dataStore.length - 1]);
+      this._swap(this._dataStore[0], this._dataStore[this._dataStore.length - 1]);
 
       this._dataStore.pop();
 
@@ -194,7 +192,7 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
         this._heapifyDown(0);
       }
 
-      return value;
+      return node.value;
     },
     enumerable: false,
     configurable: false,
@@ -241,10 +239,9 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
    */
   add: {
     value: function(value) {
-      var items = this._dataStore;
       var index = this._dataStore.length;
       
-      this._dataStore.push(new HeapNode(items, value, index));
+      this._dataStore.push(new HeapNode(this._dataStore, value, index));
 
       this._heapifyUp(index);
     },
