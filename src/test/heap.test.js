@@ -151,4 +151,21 @@ describe('A test suite Heap', function() {
       expect(node).toBeUndefined();
     }
   });
+  
+  test('should be push values and clear heap and get null when the heap is empty success', function() {
+    const heapMax = new Heap(function(a, b) {
+      return b - a;
+    });
+
+    heapMax.add(1);
+    heapMax.add(2);
+    heapMax.add(3);
+    heapMax.add(4);
+    heapMax.add(5);
+    heapMax.add(6);
+
+    heapMax.clear();
+
+    expect(heapMax.poll()).toBe(null);
+  });
 });
