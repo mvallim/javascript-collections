@@ -99,7 +99,7 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
   _heapifyDown: {
     value: function(index) {
       var node = this._dataStore[index];
-
+     
       var candidate = node;
 
       if (node.hasLeft && this._compare(candidate.value, node.left.value) > 0) {
@@ -110,13 +110,10 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
         candidate = node.right;
       }
 
-      if (node == candidate) {
-        return;
+      if (node.index != candidate.index) {
+        this._swap(node, candidate);
+        this._heapifyDown(candidate.index);
       }
-
-      this._swap(node, candidate);
-
-      this._heapifyDown(candidate.index);
     },
     enumerable: false,
     configurable: false,
