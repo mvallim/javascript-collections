@@ -241,9 +241,10 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
    */
   add: {
     value: function(value) {
+      var items = this._dataStore;
       var index = this._dataStore.length;
-
-      this._dataStore.push(new HeapNode(this._dataStore, value, index));
+      
+      this._dataStore.push(new HeapNode(items, value, index));
 
       this._heapifyUp(index);
     },
