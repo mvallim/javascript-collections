@@ -130,6 +130,20 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
    * @method
    * @memberof Heap.prototype
    * @return Object
+   * 
+   * @playground 
+   * var Heap = require("javascript-collections").Heap;
+   * 
+   * var heapmin = new Heap(function(a, b){
+   *   return a - b;
+   * });
+   * 
+   * heapmin.add(10);
+   * heapmin.add(8);
+   * heapmin.add(9);
+   * heapmin.add(7);
+   * 
+   * console.log(heapmin.peek());
    */
   peek: {
     value: function() {
@@ -150,6 +164,22 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
    * @method
    * @memberof Heap.prototype
    * @return Object
+   * 
+   * @playground 
+   * var Heap = require("javascript-collections").Heap;
+   * 
+   * var heapmax = new Heap(function(a, b){
+   *   return b - a;
+   * });
+   * 
+   * heapmax.add(1);
+   * heapmax.add(2);
+   * heapmax.add(3);
+   * heapmax.add(4);
+   * 
+   * while(!heapmax.empty) {
+   *   console.log(heapmax.poll());
+   * }  
    */
   poll: {
     value: function() {
@@ -178,6 +208,36 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
    * @memberof Heap.prototype
    * @param {value}
    *          value
+   * 
+   * @playground 
+   * var Heap = require("javascript-collections").Heap;
+   * 
+   * var obj01 = {
+   *   index: 1,
+   *   name: 'Ximenes'
+   * };
+   *
+   * var obj02 = {
+   *   index: 2,
+   *   name: 'Nunes'
+   * };
+   *
+   * var obj03 = {
+   *   index: 3,
+   *   name: 'Vallim'
+   * }; 
+   * 
+   * var heapmin = new Heap(function(a, b){
+   *   return a.index - b.index;
+   * });
+   * 
+   * heapmin.add(obj01);
+   * heapmin.add(obj02);
+   * heapmin.add(obj03);
+   * 
+   * while(!heapmin.empty) {
+   *   console.log(heapmin.poll());
+   * }           
    */
   add: {
     value: function(value) {
