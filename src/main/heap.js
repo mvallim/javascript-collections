@@ -143,7 +143,7 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
    */
   peek: {
     value: function() {
-      if (this._dataStore.length == 0) {
+      if (this.empty) {
         return null;
       }
 
@@ -179,15 +179,22 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
    */
   poll: {
     value: function() {
-      this._swap(this._dataStore[0], this._dataStore[this._dataStore.length - 1]);
+      
+      if (this.empty) {
+        return null;
+      }
+      
+      var value = this.peek();
+      
+      this._swap(this._dataStore[0], this._dataStore[this.length - 1]);
 
-      var node = this._dataStore.pop();
-
-      if (this._dataStore.length > 0) {
+      this._dataStore.pop();
+      
+      if (this.length > 1) {
         this._heapifyDown(0);
       }
 
-      return node.value;
+      return value;
     },
     enumerable: false,
     configurable: false,
