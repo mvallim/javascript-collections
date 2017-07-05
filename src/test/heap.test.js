@@ -125,7 +125,7 @@ describe('A test suite Heap', function() {
     heapMax.add(6);
 
     while (!heapMax.empty) {
-      console.log(heapMax.poll());
+      heapMax.poll();
     }
 
     expect(heapMax.empty).toBe(true);
