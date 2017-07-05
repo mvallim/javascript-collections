@@ -182,11 +182,9 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
    */
   poll: {
     value: function() {
-      var node = this._dataStore[0];
-
       this._swap(this._dataStore[0], this._dataStore[this._dataStore.length - 1]);
 
-      this._dataStore.pop();
+      var node = this._dataStore.pop();
 
       if (this._dataStore.length > 0) {
         this._heapifyDown(0);
