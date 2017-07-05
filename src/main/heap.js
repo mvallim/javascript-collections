@@ -110,7 +110,7 @@ Heap.prototype = Object.create(BaseCollection.prototype, {
         candidate = node.right;
       }
 
-      if (node.index != candidate.index) {
+      if (this._compare(node.value, candidate.value) == 0) {
         this._swap(node, candidate);
         this._heapifyDown(candidate.index);
       }
