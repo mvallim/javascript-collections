@@ -4,4 +4,5 @@ module.exports = {
   LinkedList: require('./linkedlist'),
   HashSet: require('./hashset'),
   Heap: require('./heap'),
+  BitArray: require('./bitarray')
 };

@@ -566,7 +566,8 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
       this._values = [];
     },
     configurable : false,
-  },
+  }
+  
 });
 
 module.exports = HashSet;
