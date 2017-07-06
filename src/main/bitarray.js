@@ -4,7 +4,6 @@ var BaseCollection = require('./commons/basecollection');
  * @classdesc UNDERDEVELOPMENT
  * 
  * @constructor
- * @requires HashSetIterator
  * @augments BaseCollection
  * @param {Number}
  *          size
