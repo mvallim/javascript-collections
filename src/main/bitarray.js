@@ -1,10 +1,28 @@
 var BaseObject = require('./commons/baseobject');
 
 /**
- * @classdesc UNDERDEVELOPMENT
+ * @classdesc A bit array is a mapping from some domain (almost always a range
+ *            of integers) to values in the set {0, 1}. The values can be
+ *            interpreted as dark/light, absent/present, locked/unlocked,
+ *            valid/invalid, etcetera. The point is that there are only two
+ *            possible values, so they can be stored in one bit. As with other
+ *            arrays, the access to a single bit can be managed by applying an
+ *            index to the array. Assuming its size (or length) to be n bits,
+ *            the array can be used to specify a subset of the domain (e.g. {0,
+ *            1, 2, ..., n−1}), where a 1-bit indicates the presence and a 0-bit
+ *            the absence of a number in the set. This set data structure uses
+ *            about n/w words of space, where w is the number of bits in each
+ *            machine word. Whether the least significant bit (of the word) or
+ *            the most significant bit indicates the smallest-index number is
+ *            largely irrelevant, but the former tends to be preferred (on
+ *            little-endian machines).
+ * 
+ * @link https://en.wikipedia.org/wiki/Bit_array
  * 
  * @constructor
+ * 
  * @augments BaseObject
+ * 
  * @param {Number}
  *          size
  */
@@ -96,7 +114,7 @@ BitArray.prototype = Object.create(BaseObject.prototype, {
     configurable : false,
     writable : false
   },
-  
+
   /**
    * @method
    * @memberof BitArray.prototype
@@ -263,8 +281,8 @@ BitArray.prototype = Object.create(BaseObject.prototype, {
       for (var i = 0; i < high.chunks; i++) {
         result._dataStore[i] = (result._dataStore[i] & high._dataStore[i]) >>> 0;
       }
-      
-      return result;      
+
+      return result;
     },
     enumerable : false,
     configurable : false,
@@ -300,7 +318,7 @@ BitArray.prototype = Object.create(BaseObject.prototype, {
         result._dataStore[i] = (result._dataStore[i] ^ high._dataStore[i]) >>> 0;
       }
 
-      return result;      
+      return result;
     },
     enumerable : false,
     configurable : false,

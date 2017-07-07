@@ -28,7 +28,7 @@ var HashSet = function HashSet(hashCode) {
     _size : 0,
     _keys : [],
     _values : [],
-    _hashCode : hashCode,
+    _hashCode : hashCode
   });
 };
 
@@ -43,7 +43,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     value : undefined,
     enumerable : true,
     configurable : false,
-    writable : true,
+    writable : true
   },
 
   /**
@@ -53,7 +53,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     value : undefined,
     enumerable : false,
     configurable : false,
-    writable : true,
+    writable : true
   },
 
   /**
@@ -63,7 +63,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     value : undefined,
     enumerable : true,
     configurable : false,
-    writable : true,
+    writable : true
   },
 
   /**
@@ -73,7 +73,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     value : undefined,
     enumerable : true,
     configurable : false,
-    writable : true,
+    writable : true
   },
 
   /**
@@ -83,7 +83,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     value : undefined,
     enumerable : false,
     configurable : false,
-    writable : true,
+    writable : true
   },
 
   /**
@@ -123,7 +123,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -142,7 +142,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -158,7 +158,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -182,7 +182,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -198,7 +198,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : true,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -214,7 +214,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : true,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -237,7 +237,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -278,7 +278,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -324,7 +324,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -354,7 +354,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -372,7 +372,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -428,7 +428,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -478,7 +478,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -528,7 +528,7 @@ HashSet.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**

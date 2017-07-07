@@ -9,7 +9,8 @@
     "queue",
     "stack",
     "hashset",
-    "heap"
+    "heap",
+    "bitarray"
   ],
   "browser": "dist/javascript-collections.min.js",
   "main": "dist/javascript-collections.min.js",
