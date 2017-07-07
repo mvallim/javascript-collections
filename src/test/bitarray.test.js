@@ -108,7 +108,7 @@ describe('A test suite BitArray', function () {
     bitArray01.set(32);
     bitArray01.set(63);
 
-    var or = bitArray01.or(bitArray02);
+    var or = bitArray02.or(bitArray01);
 
     expect(or.length).toBe(Math.max(bitArray01.length, bitArray02.length));
 
@@ -152,7 +152,7 @@ describe('A test suite BitArray', function () {
     bitArray02.set(68);
     bitArray02.set(99);
 
-    var and = bitArray01.and(bitArray02);
+    var and = bitArray02.and(bitArray01);
 
     expect(and.length).toBe(Math.max(bitArray01.length, bitArray02.length));
 
@@ -191,7 +191,7 @@ describe('A test suite BitArray', function () {
     bitArray01.set(32);
     bitArray01.set(63);
 
-    var xor = bitArray01.xor(bitArray02);
+    var xor = bitArray02.xor(bitArray01);
 
     expect(xor.length).toBe(Math.max(bitArray01.length, bitArray02.length));
 

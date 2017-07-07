@@ -1,15 +1,15 @@
-var BaseCollection = require('./commons/basecollection');
+var BaseObject = require('./commons/baseobject');
 
 /**
  * @classdesc UNDERDEVELOPMENT
  * 
  * @constructor
- * @augments BaseCollection
+ * @augments BaseObject
  * @param {Number}
  *          size
  */
 var BitArray = function BitArray(size) {
-  BaseCollection.call(this, {
+  BaseObject.call(this, {
     _size : size,
     _dataStore : []
   });
@@ -17,25 +17,9 @@ var BitArray = function BitArray(size) {
   this.initDataStore();
 };
 
-BitArray.prototype = Object.create(BaseCollection.prototype, {
+BitArray.prototype = Object.create(BaseObject.prototype, {
 
   constructor : BitArray,
-
-  /**
-   * @method
-   * @private
-   * @memberof BaseObject.prototype
-   */
-  initDataStore : {
-    value : function () {
-      for (var i = 0; i < this.chunks; i++) {
-        this._dataStore.push(this._ZERO);
-      }
-    },
-    enumerable : false,
-    configurable : false,
-    writable : false,
-  },
 
   /**
    * @private
@@ -44,7 +28,7 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
     value : undefined,
     enumerable : false,
     configurable : false,
-    writable : true,
+    writable : true
   },
 
   /**
@@ -54,7 +38,7 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
     value : undefined,
     enumerable : false,
     configurable : false,
-    writable : true,
+    writable : true
   },
 
   /**
@@ -99,6 +83,22 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
 
   /**
    * @method
+   * @private
+   * @memberof BitArray.prototype
+   */
+  initDataStore : {
+    value : function () {
+      for (var i = 0; i < this.chunks; i++) {
+        this._dataStore.push(this._ZERO);
+      }
+    },
+    enumerable : false,
+    configurable : false,
+    writable : false
+  },
+  
+  /**
+   * @method
    * @memberof BitArray.prototype
    * @param {Number}
    *          index
@@ -115,7 +115,7 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -138,7 +138,7 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -155,7 +155,7 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -181,7 +181,7 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -196,7 +196,7 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -232,7 +232,7 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -268,7 +268,7 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -304,7 +304,7 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
     },
     enumerable : false,
     configurable : false,
-    writable : false,
+    writable : false
   },
 
   /**
@@ -331,30 +331,7 @@ BitArray.prototype = Object.create(BaseCollection.prototype, {
     get : function () {
       return this._size;
     },
-    configurable : false,
-  },
-
-  /**
-   * @inheritdoc
-   * @memberof BitArray.prototype
-   */
-  empty : {
-    get : function () {
-      return true;
-    },
-    configurable : false,
-  },
-
-  /**
-   * @inheritdoc
-   * @method
-   * @memberof BitArray.prototype
-   */
-  clear : {
-    value : function () {
-      this._size = 0;
-    },
-    configurable : false,
+    configurable : false
   }
 
 });
