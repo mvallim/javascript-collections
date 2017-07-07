@@ -17,7 +17,7 @@ var BaseObject = require('./commons/baseobject');
  *            largely irrelevant, but the former tends to be preferred (on
  *            little-endian machines).
  * 
- * @link https://en.wikipedia.org/wiki/Bit_array
+ * @see {@link https://en.wikipedia.org/wiki/Bit_array|Wikipedia}
  * 
  * @constructor
  * 
